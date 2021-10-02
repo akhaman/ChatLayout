@@ -14,6 +14,8 @@
 		CE46FFA12708DDFF00EBEAC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE46FF9F2708DDFF00EBEAC2 /* LaunchScreen.storyboard */; };
 		CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */; };
 		CE46FFB02708E08D00EBEAC2 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */; };
+		CE46FFB22708E12D00EBEAC2 /* UIView+LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFB12708E12D00EBEAC2 /* UIView+LayoutBuilder.swift */; };
+		CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		CE46FFA22708DDFF00EBEAC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
+		CE46FFB12708E12D00EBEAC2 /* UIView+LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutBuilder.swift"; sourceTree = "<group>"; };
+		CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 			children = (
 				CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */,
 				CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */,
+				CE46FFB12708E12D00EBEAC2 /* UIView+LayoutBuilder.swift */,
+				CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -180,7 +186,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE46FF992708DDFD00EBEAC2 /* ViewController.swift in Sources */,
+				CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */,
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
+				CE46FFB22708E12D00EBEAC2 /* UIView+LayoutBuilder.swift in Sources */,
 				CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */,
 				CE46FF972708DDFD00EBEAC2 /* SceneDelegate.swift in Sources */,
 				CE46FFB02708E08D00EBEAC2 /* UICollectionView+.swift in Sources */,
