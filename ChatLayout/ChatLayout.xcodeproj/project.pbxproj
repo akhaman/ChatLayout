@@ -12,6 +12,8 @@
 		CE46FF992708DDFD00EBEAC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FF982708DDFD00EBEAC2 /* ViewController.swift */; };
 		CE46FF9E2708DDFF00EBEAC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE46FF9D2708DDFF00EBEAC2 /* Assets.xcassets */; };
 		CE46FFA12708DDFF00EBEAC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE46FF9F2708DDFF00EBEAC2 /* LaunchScreen.storyboard */; };
+		CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */; };
+		CE46FFB02708E08D00EBEAC2 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		CE46FF9D2708DDFF00EBEAC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE46FFA02708DDFF00EBEAC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE46FFA22708DDFF00EBEAC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,56 @@
 		CE46FF932708DDFD00EBEAC2 /* ChatLayout */ = {
 			isa = PBXGroup;
 			children = (
-				CE46FF942708DDFD00EBEAC2 /* AppDelegate.swift */,
-				CE46FF962708DDFD00EBEAC2 /* SceneDelegate.swift */,
-				CE46FF982708DDFD00EBEAC2 /* ViewController.swift */,
-				CE46FF9D2708DDFF00EBEAC2 /* Assets.xcassets */,
-				CE46FF9F2708DDFF00EBEAC2 /* LaunchScreen.storyboard */,
+				CE46FFA82708E01F00EBEAC2 /* UI */,
+				CE46FFAC2708E05200EBEAC2 /* Extensions */,
+				CE46FFAB2708E04B00EBEAC2 /* Resourses */,
 				CE46FFA22708DDFF00EBEAC2 /* Info.plist */,
 			);
 			path = ChatLayout;
+			sourceTree = "<group>";
+		};
+		CE46FFA82708E01F00EBEAC2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CE46FFA92708E03800EBEAC2 /* Root */,
+				CE46FFAA2708E03F00EBEAC2 /* Modules */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CE46FFA92708E03800EBEAC2 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CE46FF9F2708DDFF00EBEAC2 /* LaunchScreen.storyboard */,
+				CE46FF942708DDFD00EBEAC2 /* AppDelegate.swift */,
+				CE46FF962708DDFD00EBEAC2 /* SceneDelegate.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		CE46FFAA2708E03F00EBEAC2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE46FF982708DDFD00EBEAC2 /* ViewController.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CE46FFAB2708E04B00EBEAC2 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				CE46FF9D2708DDFF00EBEAC2 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		CE46FFAC2708E05200EBEAC2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */,
+				CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +180,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE46FF992708DDFD00EBEAC2 /* ViewController.swift in Sources */,
+				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
 				CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */,
 				CE46FF972708DDFD00EBEAC2 /* SceneDelegate.swift in Sources */,
+				CE46FFB02708E08D00EBEAC2 /* UICollectionView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
