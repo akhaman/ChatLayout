@@ -9,14 +9,22 @@ import UIKit
 
 extension UIView {
 
-    func constraint(_ configure: (_ builder: LayoutBuilder) -> Void) {
-        configure(LayoutBuilder(with: self))
+    func layout(_ configurator: (_ builder: LayoutBuilder) -> Void) {
+        configurator(LayoutBuilder(with: self))
     }
 }
 
 final class LayoutBuilder {
 
     private unowned let targetView: UIView
+
+    private var superview: UIView? {
+        guard let superview = targetView.superview else {
+            assertionFailure("Superview must exist")
+            return nil
+        }
+        return superview
+    }
 
     fileprivate init(with targetView: UIView) {
         self.targetView = targetView
@@ -26,9 +34,7 @@ final class LayoutBuilder {
     // MARK: - Superview binding
 
     func equalToSuperview(insets: UIEdgeInsets = .zero) {
-        guard let superview = targetView.superview else {
-            return assertionFailure("Superview must exist")
-        }
+        guard let superview = superview else { return }
         NSLayoutConstraint.activate([
             targetView.topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top),
             targetView.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: insets.left),
@@ -140,9 +146,19 @@ final class LayoutBuilder {
         targetView.centerXAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
     }
 
+    func centerXEqualToSuperview(with constant: CGFloat = .zero) {
+        guard let superview = superview else { return }
+        targetView.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: constant).isActive = true
+    }
+
     func centerY(equalTo side: VerticalSide, of view: UIView, with constant: CGFloat = .zero) {
         let anchor = yAxisAnchor(from: view, with: side)
         targetView.centerYAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+    }
+
+    func centerYEqualToSuperview(with constant: CGFloat = .zero) {
+        guard let superview = superview else { return }
+        targetView.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant).isActive = true
     }
 
     // MARK: - Sides
