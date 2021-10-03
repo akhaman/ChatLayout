@@ -9,8 +9,8 @@ import UIKit
 
 extension UIView {
 
-    func constraint(_ configure: (_ builder: LayoutBuilder) -> Void) {
-        configure(LayoutBuilder(with: self))
+    func layout(_ configurator: (_ builder: LayoutBuilder) -> Void) {
+        configurator(LayoutBuilder(with: self))
     }
 }
 
@@ -146,7 +146,7 @@ final class LayoutBuilder {
         targetView.centerXAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
     }
 
-    func centerX(equalToSuperviewWith constant: CGFloat = .zero) {
+    func centerXEqualToSuperview(with constant: CGFloat = .zero) {
         guard let superview = superview else { return }
         targetView.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: constant).isActive = true
     }
@@ -156,7 +156,7 @@ final class LayoutBuilder {
         targetView.centerYAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
     }
 
-    func centerY(equalToSuperviewWith constant: CGFloat = .zero) {
+    func centerYEqualToSuperview(with constant: CGFloat = .zero) {
         guard let superview = superview else { return }
         targetView.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant).isActive = true
     }
