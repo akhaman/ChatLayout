@@ -20,7 +20,9 @@ class NavigationBar: UINavigationBar {
 
     private func setup() {
         let buttonAppearence = UIBarButtonItemAppearance()
-        buttonAppearence.normal.titleTextAttributes = [.foregroundColor: UIColor.darkGray]
+        buttonAppearence.normal.titleTextAttributes = [
+            .foregroundColor: UIColor.adaptedFor(light: .pureBlack, dark: .socialWhite)
+        ]
 
         let appearence = UINavigationBarAppearance()
         appearence.buttonAppearance = buttonAppearence

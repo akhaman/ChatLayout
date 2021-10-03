@@ -20,6 +20,7 @@
 		CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFBA2709F9A100EBEAC2 /* Colors.swift */; };
 		CE46FFBE2709FB9E00EBEAC2 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFBD2709FB9E00EBEAC2 /* Font.swift */; };
 		CE46FFC0270A00B700EBEAC2 /* Habibi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */; };
+		CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CE46FFBA2709F9A100EBEAC2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE46FFBD2709FB9E00EBEAC2 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Habibi-Regular.otf"; sourceTree = "<group>"; };
+		CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */,
 				CE46FFB12708E12D00EBEAC2 /* UIView+LayoutBuilder.swift */,
 				CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */,
+				CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */,
 				CE46FFBE2709FB9E00EBEAC2 /* Font.swift in Sources */,
 				CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */,
+				CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */,
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
 				CE46FFB22708E12D00EBEAC2 /* UIView+LayoutBuilder.swift in Sources */,
 				CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */,

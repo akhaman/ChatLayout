@@ -9,12 +9,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.separatorInset = .zero
-        return tableView
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -22,7 +16,7 @@ class ProfileViewController: UIViewController {
 
     private func setup() {
         title = "Alex Tsimikas"
-        view.backgroundColor = .systemFill
+        view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Messages",
             style: .plain,
@@ -32,12 +26,5 @@ class ProfileViewController: UIViewController {
     }
 
     @objc private func messagesButtonTapped() {
-        let button = UIButton()
-        view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        let label = UILabel()
-//        label.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: <#T##UIFont#>)
-
-
     }
 }
