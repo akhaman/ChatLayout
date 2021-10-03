@@ -15,4 +15,6 @@ extension UIColor {
     static let pureBlack = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let darkGray = #colorLiteral(red: 0.1942988634, green: 0.2041570842, blue: 0.2126381993, alpha: 1)
     static let lighterGray = #colorLiteral(red: 0.4453001618, green: 0.455106914, blue: 0.4678991437, alpha: 1)
+    static let navBarLight = #colorLiteral(red: 0.9607035518, green: 0.9608380198, blue: 0.9606611133, alpha: 1)
+    static let navBarDark = #colorLiteral(red: 0.1097908095, green: 0.1098125651, blue: 0.1097838953, alpha: 1)
 }

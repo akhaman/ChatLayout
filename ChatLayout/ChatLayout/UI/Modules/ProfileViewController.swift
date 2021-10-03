@@ -9,11 +9,14 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    private lazy var logoutButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Logout", for: .normal)
+    private lazy var logoutButton: UIButton = RoundedButton(title: "Logout", image: .arrowLeft)
 
-        return button
+    private lazy var captionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font(ofSize: 14, forTextStyle: .caption2)
+        label.textColor = .adaptedFor(light: .darkGray, dark: .lighterGray)
+        label.text = "Brooklyn, NY"
+        return label
     }()
 
     override func viewDidLoad() {
@@ -30,11 +33,18 @@ class ProfileViewController: UIViewController {
             target: self,
             action: #selector(messagesButtonTapped)
         )
-        view.addSubview(logoutButton)
-//        logoutButton.constraint {
-//            $0.cen
-//        }
 
+        view.addSubview(captionLabel)
+        captionLabel.layout {
+            $0.left(equalTo: .left, of: view, with: 25)
+            $0.top(equalTo: .top, of: view, with: 19)
+        }
+
+        view.addSubview(logoutButton)
+        logoutButton.layout {
+            $0.centerXEqualToSuperview()
+            $0.top(equalTo: .top, of: view, with: 136)
+        }
     }
 
     @objc private func messagesButtonTapped() {

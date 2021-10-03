@@ -20,21 +20,22 @@ class NavigationBar: UINavigationBar {
 
     private func setup() {
         let appearence = UINavigationBarAppearance()
+        appearence.backgroundColor = .adaptedFor(light: .navBarLight, dark: .navBarDark)
 
         appearence.largeTitleTextAttributes = [
             .foregroundColor: UIColor.adaptedFor(light: .primaryBlack, dark: .primaryWhite),
-            .font: UIFont.font(for: .navigationTitleLarge)
+            .font: UIFont.font(ofSize: 34, forTextStyle: .largeTitle)
         ]
 
         appearence.titleTextAttributes = [
             .foregroundColor: UIColor.adaptedFor(light: .primaryBlack, dark: .socialWhite),
-            .font: UIFont.font(for: .navigationTitle)
+            .font: UIFont.font(ofSize: 17, forTextStyle: .headline)
         ]
 
         let buttonAppearence = UIBarButtonItemAppearance()
         buttonAppearence.normal.titleTextAttributes = [
             .foregroundColor: UIColor.adaptedFor(light: .pureBlack, dark: .socialWhite),
-            .font: UIFont.font(for: .navigationButton)
+            .font: UIFont.font(ofSize: 17, forTextStyle: .body)
         ]
         appearence.buttonAppearance = buttonAppearence
 
@@ -42,5 +43,6 @@ class NavigationBar: UINavigationBar {
         standardAppearance = appearence
         scrollEdgeAppearance = appearence
         prefersLargeTitles = true
+        isTranslucent = false
     }
 }

@@ -18,9 +18,11 @@
 		CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */; };
 		CE46FFB7270905EA00EBEAC2 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFB6270905EA00EBEAC2 /* NavigationBar.swift */; };
 		CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFBA2709F9A100EBEAC2 /* Colors.swift */; };
-		CE46FFBE2709FB9E00EBEAC2 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFBD2709FB9E00EBEAC2 /* Font.swift */; };
+		CE46FFBE2709FB9E00EBEAC2 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFBD2709FB9E00EBEAC2 /* Fonts.swift */; };
 		CE46FFC0270A00B700EBEAC2 /* Habibi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */; };
 		CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */; };
+		CED2B0AE270A2460007B6E83 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2B0AD270A2460007B6E83 /* Images.swift */; };
+		CED2B0B0270A2CAC007B6E83 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +39,11 @@
 		CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+.swift"; sourceTree = "<group>"; };
 		CE46FFB6270905EA00EBEAC2 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		CE46FFBA2709F9A100EBEAC2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		CE46FFBD2709FB9E00EBEAC2 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		CE46FFBD2709FB9E00EBEAC2 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Habibi-Regular.otf"; sourceTree = "<group>"; };
 		CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		CED2B0AD270A2460007B6E83 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				CE46FFB6270905EA00EBEAC2 /* NavigationBar.swift */,
+				CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -142,7 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				CE46FFBA2709F9A100EBEAC2 /* Colors.swift */,
-				CE46FFBD2709FB9E00EBEAC2 /* Font.swift */,
+				CE46FFBD2709FB9E00EBEAC2 /* Fonts.swift */,
+				CED2B0AD270A2460007B6E83 /* Images.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -218,8 +224,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE46FF992708DDFD00EBEAC2 /* ProfileViewController.swift in Sources */,
+				CED2B0AE270A2460007B6E83 /* Images.swift in Sources */,
 				CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */,
-				CE46FFBE2709FB9E00EBEAC2 /* Font.swift in Sources */,
+				CE46FFBE2709FB9E00EBEAC2 /* Fonts.swift in Sources */,
 				CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */,
 				CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */,
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
@@ -228,6 +235,7 @@
 				CE46FFB7270905EA00EBEAC2 /* NavigationBar.swift in Sources */,
 				CE46FF972708DDFD00EBEAC2 /* SceneDelegate.swift in Sources */,
 				CE46FFB02708E08D00EBEAC2 /* UICollectionView+.swift in Sources */,
+				CED2B0B0270A2CAC007B6E83 /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
