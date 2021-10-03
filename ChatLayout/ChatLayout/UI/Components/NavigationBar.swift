@@ -22,12 +22,12 @@ class NavigationBar: UINavigationBar {
         let appearence = UINavigationBarAppearance()
 
         appearence.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.adaptedFor(light: .darkBlack, dark: .primaryWhite),
+            .foregroundColor: UIColor.adaptedFor(light: .primaryBlack, dark: .primaryWhite),
             .font: UIFont.font(for: .navigationTitleLarge)
         ]
 
         appearence.titleTextAttributes = [
-            .foregroundColor: UIColor.adaptedFor(light: .darkBlack, dark: .socialWhite),
+            .foregroundColor: UIColor.adaptedFor(light: .primaryBlack, dark: .socialWhite),
             .font: UIFont.font(for: .navigationTitle)
         ]
 
