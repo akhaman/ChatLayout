@@ -21,6 +21,7 @@
 		CE46FFBE2709FB9E00EBEAC2 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFBD2709FB9E00EBEAC2 /* Fonts.swift */; };
 		CE46FFC0270A00B700EBEAC2 /* Habibi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */; };
 		CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */; };
+		CE50AA36270A3B9100BB52AC /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */; };
 		CED2B0AE270A2460007B6E83 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2B0AD270A2460007B6E83 /* Images.swift */; };
 		CED2B0B0270A2CAC007B6E83 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		CE46FFBD2709FB9E00EBEAC2 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Habibi-Regular.otf"; sourceTree = "<group>"; };
 		CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CED2B0AD270A2460007B6E83 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +110,8 @@
 		CE46FFAA2708E03F00EBEAC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CE46FF982708DDFD00EBEAC2 /* ProfileViewController.swift */,
+				CE50AA33270A3B7C00BB52AC /* Profile */,
+				CE50AA34270A3B8300BB52AC /* Messages */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -151,6 +154,22 @@
 				CED2B0AD270A2460007B6E83 /* Images.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		CE50AA33270A3B7C00BB52AC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CE46FF982708DDFD00EBEAC2 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CE50AA34270A3B8300BB52AC /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +250,7 @@
 				CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */,
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
 				CE46FFB22708E12D00EBEAC2 /* UIView+LayoutBuilder.swift in Sources */,
+				CE50AA36270A3B9100BB52AC /* MessagesViewController.swift in Sources */,
 				CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */,
 				CE46FFB7270905EA00EBEAC2 /* NavigationBar.swift in Sources */,
 				CE46FF972708DDFD00EBEAC2 /* SceneDelegate.swift in Sources */,

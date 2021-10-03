@@ -20,7 +20,9 @@ class NavigationBar: UINavigationBar {
 
     private func setup() {
         let appearence = UINavigationBarAppearance()
+
         appearence.backgroundColor = .adaptedFor(light: .navBarLight, dark: .navBarDark)
+        appearence.setBackIndicatorImage(.backIcon, transitionMaskImage: .backIcon)
 
         appearence.largeTitleTextAttributes = [
             .foregroundColor: UIColor.adaptedFor(light: .primaryBlack, dark: .primaryWhite),
@@ -37,8 +39,9 @@ class NavigationBar: UINavigationBar {
             .foregroundColor: UIColor.adaptedFor(light: .pureBlack, dark: .socialWhite),
             .font: UIFont.font(ofSize: 17, forTextStyle: .body)
         ]
-        appearence.buttonAppearance = buttonAppearence
 
+        appearence.buttonAppearance = buttonAppearence
+        tintColor = .adaptedFor(light: .primaryBlack, dark: .socialWhite)
         compactAppearance = appearence
         standardAppearance = appearence
         scrollEdgeAppearance = appearence

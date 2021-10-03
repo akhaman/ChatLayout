@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
     private func setupView() {
         title = "Alex Tsimikas"
         view.backgroundColor = .adaptedFor(light: .primaryWhite, dark: .primaryBlack)
+        navigationItem.backButtonTitle = ""
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Messages",
             style: .plain,
@@ -48,5 +49,7 @@ class ProfileViewController: UIViewController {
     }
 
     @objc private func messagesButtonTapped() {
+        let controller = MessagesViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
