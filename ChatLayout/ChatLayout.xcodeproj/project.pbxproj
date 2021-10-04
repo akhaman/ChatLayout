@@ -22,6 +22,8 @@
 		CE46FFC0270A00B700EBEAC2 /* Habibi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */; };
 		CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */; };
 		CE50AA36270A3B9100BB52AC /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */; };
+		CE50AA38270A5A5200BB52AC /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50AA37270A5A5200BB52AC /* MessagesView.swift */; };
+		CE50AA3B270B892300BB52AC /* MessagesHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50AA3A270B892300BB52AC /* MessagesHorizontalCell.swift */; };
 		CED2B0AE270A2460007B6E83 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2B0AD270A2460007B6E83 /* Images.swift */; };
 		CED2B0B0270A2CAC007B6E83 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,8 @@
 		CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Habibi-Regular.otf"; sourceTree = "<group>"; };
 		CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		CE50AA37270A5A5200BB52AC /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		CE50AA3A270B892300BB52AC /* MessagesHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesHorizontalCell.swift; sourceTree = "<group>"; };
 		CED2B0AD270A2460007B6E83 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,9 +171,19 @@
 		CE50AA34270A3B8300BB52AC /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				CE50AA39270B890B00BB52AC /* cells */,
 				CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */,
+				CE50AA37270A5A5200BB52AC /* MessagesView.swift */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		CE50AA39270B890B00BB52AC /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE50AA3A270B892300BB52AC /* MessagesHorizontalCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,9 +261,11 @@
 				CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */,
 				CE46FFBE2709FB9E00EBEAC2 /* Fonts.swift in Sources */,
 				CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */,
+				CE50AA38270A5A5200BB52AC /* MessagesView.swift in Sources */,
 				CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */,
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
 				CE46FFB22708E12D00EBEAC2 /* UIView+LayoutBuilder.swift in Sources */,
+				CE50AA3B270B892300BB52AC /* MessagesHorizontalCell.swift in Sources */,
 				CE50AA36270A3B9100BB52AC /* MessagesViewController.swift in Sources */,
 				CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */,
 				CE46FFB7270905EA00EBEAC2 /* NavigationBar.swift in Sources */,
@@ -324,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -379,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

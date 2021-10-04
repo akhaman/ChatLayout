@@ -46,6 +46,6 @@ class NavigationBar: UINavigationBar {
         standardAppearance = appearence
         scrollEdgeAppearance = appearence
         prefersLargeTitles = true
-        isTranslucent = false
+//        isTranslucent = false
     }
 }
