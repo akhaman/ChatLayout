@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIColor {
+    
     static func adaptedFor(light: UIColor, dark: UIColor) -> UIColor {
         UIColor { traitCollection in
             switch traitCollection.userInterfaceStyle {

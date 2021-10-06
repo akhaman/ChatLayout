@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */; };
+		CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */; };
+		CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434C270E29B7006BA2FE /* ChatPreview.swift */; };
 		CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FF942708DDFD00EBEAC2 /* AppDelegate.swift */; };
 		CE46FF972708DDFD00EBEAC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FF962708DDFD00EBEAC2 /* SceneDelegate.swift */; };
 		CE46FF992708DDFD00EBEAC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FF982708DDFD00EBEAC2 /* ProfileViewController.swift */; };
@@ -21,11 +24,18 @@
 		CE46FFBE2709FB9E00EBEAC2 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFBD2709FB9E00EBEAC2 /* Fonts.swift */; };
 		CE46FFC0270A00B700EBEAC2 /* Habibi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */; };
 		CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */; };
+		CE50AA36270A3B9100BB52AC /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */; };
+		CE50AA38270A5A5200BB52AC /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50AA37270A5A5200BB52AC /* MessagesView.swift */; };
+		CE50AA3B270B892300BB52AC /* MessagesHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50AA3A270B892300BB52AC /* MessagesHorizontalCell.swift */; };
+		CE50AA3D270BA04900BB52AC /* MessagesVerticalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50AA3C270BA04900BB52AC /* MessagesVerticalCell.swift */; };
 		CED2B0AE270A2460007B6E83 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2B0AD270A2460007B6E83 /* Images.swift */; };
 		CED2B0B0270A2CAC007B6E83 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderFooterView.swift; sourceTree = "<group>"; };
+		CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
+		CE17434C270E29B7006BA2FE /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
 		CE46FF912708DDFD00EBEAC2 /* ChatLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE46FF942708DDFD00EBEAC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE46FF962708DDFD00EBEAC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +52,10 @@
 		CE46FFBD2709FB9E00EBEAC2 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Habibi-Regular.otf"; sourceTree = "<group>"; };
 		CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		CE50AA37270A5A5200BB52AC /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		CE50AA3A270B892300BB52AC /* MessagesHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesHorizontalCell.swift; sourceTree = "<group>"; };
+		CE50AA3C270BA04900BB52AC /* MessagesVerticalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesVerticalCell.swift; sourceTree = "<group>"; };
 		CED2B0AD270A2460007B6E83 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE17434E270E307C006BA2FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE17434C270E29B7006BA2FE /* ChatPreview.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CE46FF882708DDFD00EBEAC2 = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +130,8 @@
 		CE46FFAA2708E03F00EBEAC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CE46FF982708DDFD00EBEAC2 /* ProfileViewController.swift */,
+				CE50AA33270A3B7C00BB52AC /* Profile */,
+				CE50AA34270A3B8300BB52AC /* Messages */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -130,6 +153,7 @@
 				CE46FFB12708E12D00EBEAC2 /* UIView+LayoutBuilder.swift */,
 				CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */,
 				CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */,
+				CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -139,6 +163,8 @@
 			children = (
 				CE46FFB6270905EA00EBEAC2 /* NavigationBar.swift */,
 				CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */,
+				CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */,
+				CE50AA39270B890B00BB52AC /* Cells */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -151,6 +177,33 @@
 				CED2B0AD270A2460007B6E83 /* Images.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		CE50AA33270A3B7C00BB52AC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CE46FF982708DDFD00EBEAC2 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CE50AA34270A3B8300BB52AC /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				CE17434E270E307C006BA2FE /* Models */,
+				CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */,
+				CE50AA37270A5A5200BB52AC /* MessagesView.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		CE50AA39270B890B00BB52AC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE50AA3A270B892300BB52AC /* MessagesHorizontalCell.swift */,
+				CE50AA3C270BA04900BB52AC /* MessagesVerticalCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,12 +278,19 @@
 			files = (
 				CE46FF992708DDFD00EBEAC2 /* ProfileViewController.swift in Sources */,
 				CED2B0AE270A2460007B6E83 /* Images.swift in Sources */,
+				CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */,
+				CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */,
 				CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */,
 				CE46FFBE2709FB9E00EBEAC2 /* Fonts.swift in Sources */,
 				CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */,
+				CE50AA38270A5A5200BB52AC /* MessagesView.swift in Sources */,
 				CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */,
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
+				CE50AA3D270BA04900BB52AC /* MessagesVerticalCell.swift in Sources */,
+				CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */,
 				CE46FFB22708E12D00EBEAC2 /* UIView+LayoutBuilder.swift in Sources */,
+				CE50AA3B270B892300BB52AC /* MessagesHorizontalCell.swift in Sources */,
+				CE50AA36270A3B9100BB52AC /* MessagesViewController.swift in Sources */,
 				CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */,
 				CE46FFB7270905EA00EBEAC2 /* NavigationBar.swift in Sources */,
 				CE46FF972708DDFD00EBEAC2 /* SceneDelegate.swift in Sources */,
@@ -304,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -359,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
