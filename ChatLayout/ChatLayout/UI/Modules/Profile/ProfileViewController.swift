@@ -9,46 +9,73 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    private lazy var logoutButton: UIButton = RoundedButton(title: "Logout", image: .arrowLeft)
+    private enum Constants {
+        static let title = "Alex Tsimikas"
+        static let logoutButtonTitle = "Logout"
+        static let captionText = "Brooklyn, NY"
+        static let messagesButtonItemTitle = "Messages"
+    }
+
+    // MARK: - Subviews
+
+    private lazy var logoutButton: UIButton = RoundedButton(title: Constants.logoutButtonTitle, image: .arrowLeft)
 
     private lazy var captionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(ofSize: 14, forTextStyle: .caption2)
         label.textColor = .adaptedFor(light: .darkGray, dark: .lighterGray)
-        label.text = "Brooklyn, NY"
+        label.text = Constants.captionText
         return label
     }()
+
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
 
+    // MARK: - Helpers
+
     private func setupView() {
-        title = "Alex Tsimikas"
+        title = Constants.title
         view.backgroundColor = .adaptedFor(light: .primaryWhite, dark: .primaryBlack)
         navigationItem.backButtonTitle = ""
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Messages",
+            title:  Constants.messagesButtonItemTitle,
             style: .plain,
             target: self,
-            action: #selector(messagesButtonTapped)
+            action: #selector(showMessages)
         )
-
-        view.addSubview(captionLabel)
-        captionLabel.layout {
-            $0.left(equalTo: .left, of: view, with: 25)
-            $0.top(equalTo: .top, of: view, with: 19)
-        }
-
-        view.addSubview(logoutButton)
-        logoutButton.layout {
-            $0.centerXEqualToSuperview()
-            $0.top(equalTo: .top, of: view, with: 136)
-        }
+        
+        setupCaptionLabel()
+        setupLogoutButton()
     }
 
-    @objc private func messagesButtonTapped() {
+    private func setupCaptionLabel() {
+        view.addSubview(captionLabel)
+        captionLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            captionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
+            captionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            captionLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -25)
+        ])
+    }
+
+    private func setupLogoutButton() {
+        view.addSubview(logoutButton)
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 136),
+            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
+    }
+
+    // MARK: - Navigation
+
+    @objc private func showMessages() {
         let controller = MessagesViewController()
         navigationController?.pushViewController(controller, animated: true)
     }

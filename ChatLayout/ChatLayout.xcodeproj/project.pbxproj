@@ -17,7 +17,6 @@
 		CE46FFA12708DDFF00EBEAC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE46FF9F2708DDFF00EBEAC2 /* LaunchScreen.storyboard */; };
 		CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */; };
 		CE46FFB02708E08D00EBEAC2 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */; };
-		CE46FFB22708E12D00EBEAC2 /* UIView+LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFB12708E12D00EBEAC2 /* UIView+LayoutBuilder.swift */; };
 		CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */; };
 		CE46FFB7270905EA00EBEAC2 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFB6270905EA00EBEAC2 /* NavigationBar.swift */; };
 		CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FFBA2709F9A100EBEAC2 /* Colors.swift */; };
@@ -45,7 +44,6 @@
 		CE46FFA22708DDFF00EBEAC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
-		CE46FFB12708E12D00EBEAC2 /* UIView+LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutBuilder.swift"; sourceTree = "<group>"; };
 		CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+.swift"; sourceTree = "<group>"; };
 		CE46FFB6270905EA00EBEAC2 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		CE46FFBA2709F9A100EBEAC2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 			children = (
 				CE46FFAE2708E08D00EBEAC2 /* UICollectionView+.swift */,
 				CE46FFAD2708E08D00EBEAC2 /* UITableView+.swift */,
-				CE46FFB12708E12D00EBEAC2 /* UIView+LayoutBuilder.swift */,
 				CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */,
 				CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */,
 				CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */,
@@ -288,7 +285,6 @@
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
 				CE50AA3D270BA04900BB52AC /* MessagesVerticalCell.swift in Sources */,
 				CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */,
-				CE46FFB22708E12D00EBEAC2 /* UIView+LayoutBuilder.swift in Sources */,
 				CE50AA3B270B892300BB52AC /* MessagesHorizontalCell.swift in Sources */,
 				CE50AA36270A3B9100BB52AC /* MessagesViewController.swift in Sources */,
 				CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */,
