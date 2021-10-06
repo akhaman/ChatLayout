@@ -9,69 +9,72 @@ import UIKit
 
 class MessagesView: UIView {
 
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatPreview>
+
+    private enum Constants {
+        static let pinnedSectonTitle = "PINNED"
+    }
+
+    private enum Section: Int, CaseIterable {
+        case pinned
+        case chats
+    }
+
+    // MARK: - Output
+
+    var onSelectChat: ((_ chat: ChatPreview) -> Void)?
+
     // MARK: - Properties
 
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    private lazy var dataSource = makeDataSource(with: collectionView)
-    private lazy var layout = makeCompositionalLayoyt()
-
-    var onSelectChat: ((_ chat: Chat) -> Void)?
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCompositionalLayoyt())
+    private lazy var dataSource = makeDataSource()
 
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupCollectionView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup
-
-    private func setup() {
-        collectionView.backgroundColor = .adaptedFor(light: .primaryWhite, dark: .primaryBlack)
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
-        collectionView.register(MessagesHorizontalCell.self)
-        addSubview(collectionView)
-        collectionView.layout {
-            $0.equalToSuperview()
-        }
-    }
-
     // MARK: - Updating
 
-    func update(pinnedChats pinned: [Chat], listedChats listed: [Chat]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Chat>()
+    func update(pinnedChats pinned: [ChatPreview], listedChats listed: [ChatPreview]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, ChatPreview>()
         snapshot.appendSections(Section.allCases)
         snapshot.appendItems(pinned, toSection: .pinned)
         snapshot.appendItems(listed, toSection: .chats)
         dataSource.apply(snapshot)
     }
-}
 
-// MARK: - Models
+    // MARK: - Setup
 
-extension MessagesView {
-    enum Section: Int, CaseIterable {
-        case pinned
-        case chats
-    }
+    private func setupCollectionView() {
+        collectionView.backgroundColor = .adaptedFor(light: .primaryWhite, dark: .primaryBlack)
+        collectionView.dataSource = dataSource
+        collectionView.delegate = self
+        collectionView.register(MessagesVerticalCell.self, MessagesHorizontalCell.self)
+        collectionView.register(CollectionHeaderFooterView.self, withKind: UICollectionView.elementKindSectionHeader)
 
-    struct Chat: Hashable {
-        let id: String
-        let name: String
-        let image: UIImage
-        let message: String
-        let date: String
+        addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
 
 // MARK: - CollectionViewDelegate
 
 extension MessagesView: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let chat = dataSource.itemIdentifier(for: indexPath) else { return }
         onSelectChat?(chat)
@@ -81,68 +84,83 @@ extension MessagesView: UICollectionViewDelegate {
 // MARK: - CollectionViewDataSource
 
 extension MessagesView {
-    private func makeDataSource(with collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Section, Chat> {
-        UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, chat in
-            collectionView.dequeue(MessagesHorizontalCell.self, for: indexPath).updated(with: chat)
-        }
-    }
-}
 
-// MARK: - Layout
+    private func makeDataSource() -> DataSource {
+        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, chat in
+            let sectionType = Section(rawValue: indexPath.section)
 
-extension MessagesView {
-    private func makeCompositionalLayoyt() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment in
-            guard let self = self else { return nil }
-            switch Section(rawValue: sectionIndex) {
+            switch sectionType {
             case .pinned:
-                return self.makePinnedLayoutSection()
+                return collectionView.dequeue(MessagesVerticalCell.self, for: indexPath)
+                    .updated(withImage: chat.image, name: chat.firstName)
             case .chats:
-                return self.makeChatsLayoutSection()
+                return collectionView.dequeue(MessagesHorizontalCell.self, for: indexPath)
+                    .updated(withFullName: chat.fullName, image: chat.image, message: chat.message, date: chat.date)
             case .none:
                 return nil
             }
         }
-        return layout
+
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard kind == UICollectionView.elementKindSectionHeader,
+                  Section(rawValue: indexPath.section) == .pinned else { return nil }
+
+            return collectionView.dequeue(CollectionHeaderFooterView.self, ofKind: kind, indexPath: indexPath)
+                .updated(with: Constants.pinnedSectonTitle)
+        }
+
+        return dataSource
+    }
+}
+
+// MARK: - Compositional Layout
+
+extension MessagesView {
+
+    private func makeCompositionalLayoyt() -> UICollectionViewCompositionalLayout {
+        UICollectionViewCompositionalLayout { [unowned self] sectionIndex, environment in
+            let sectionType = Section(rawValue: sectionIndex)
+
+            switch sectionType {
+            case .pinned:
+                return makePinnedLayoutSection()
+            case .chats:
+                return makeChatsLayoutSection()
+            case .none:
+                return nil
+            }
+        }
     }
 
     private func makePinnedLayoutSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1)
-        )
-
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(48), heightDimension: .estimated(70))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets.bottom = 15
 
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.9),
-            heightDimension: .fractionalWidth(0.5)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitems: [item])
+
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(20))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .topLeading
         )
-
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 2)
 
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [header]
+        section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = 32
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 24, bottom: 20, trailing: 24)
 
         return section
     }
 
     private func makeChatsLayoutSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1)
-        )
-
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(92)
-        )
-
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(92))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
         let section = NSCollectionLayoutSection(group: group)
 
         return section

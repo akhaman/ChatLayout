@@ -9,6 +9,11 @@ import UIKit
 
 class MessagesViewController: UIViewController {
 
+    private enum Constants {
+        static let title = "MESSAGES"
+        static let searchPlaceholder = "Who do you want to chat with?"
+    }
+
     private lazy var messagesView = MessagesView()
 
     // MARK: - Life Cycle
@@ -27,7 +32,7 @@ class MessagesViewController: UIViewController {
     // MARK: - Helpers
 
     private func setupView() {
-        title = "MESSAGES"
+        title = Constants.title
         navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = .adaptedFor(light: .primaryWhite, dark: .primaryBlack)
         setupSearchBar()
@@ -37,7 +42,7 @@ class MessagesViewController: UIViewController {
         let searchController = UISearchController()
         let textField = searchController.searchBar.searchTextField
         textField.attributedPlaceholder = NSAttributedString(
-            string: "Who do you want to chat with?",
+            string: Constants.searchPlaceholder,
             attributes: [
                 .foregroundColor: UIColor.adaptedFor(light: .lighterGray, dark: .socialWhite),
                 .font: UIFont.font(ofSize: 17, forTextStyle: .body)
@@ -46,15 +51,22 @@ class MessagesViewController: UIViewController {
         navigationItem.searchController = searchController
     }
 
-    private func didSelect(chat: MessagesView.Chat) {
+    // MARK: - Actions
+
+    private func didSelect(chat: ChatPreview) {
     }
 }
 
 extension MessagesViewController {
     private func mockData() {
-        let chats = (0...20).map {
-            MessagesView.Chat(id: "\($0)", name: "Some Name \($0)", image: .backIcon, message: "Some message \($0)", date: "19/02/30")
+        let pinned = (0...20).map {
+            ChatPreview(id: "\($0)", firstName: "FirstName \($0)", lastName: "LastName", image: .backIcon, message: "Some message \($0)", date: "19/02/30")
         }
-        messagesView.update(pinnedChats: [], listedChats: chats)
+
+        let listed = (21...40).map {
+            ChatPreview(id: "\($0)", firstName: "FirstName \($0)", lastName: "LastName", image: .backIcon, message: "Some message \($0)", date: "19/02/30")
+        }
+
+        messagesView.update(pinnedChats: pinned, listedChats: listed)
     }
 }

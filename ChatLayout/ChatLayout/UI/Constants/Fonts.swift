@@ -15,7 +15,7 @@ extension UIFont {
 
     private static func habibiRegular(ofSize size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "Habibi-Regular", size: size) else {
-            assertionFailure("Font must exist")
+            assertionFailure("Failed to load font")
             return .systemFont(ofSize: size)
         }
         return font

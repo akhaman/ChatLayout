@@ -16,6 +16,7 @@ class MessagesHorizontalCell: UICollectionViewCell {
         view.backgroundColor = .lighterGray
         view.layer.cornerRadius = 40 / 2
         view.layer.masksToBounds = true
+        view.contentMode = .scaleToFill
         return view
     }()
 
@@ -57,7 +58,7 @@ class MessagesHorizontalCell: UICollectionViewCell {
         setupNameLabel()
         setupMessageLabel()
         setupDateLabel()
-        addSeparators()
+        addSeparator()
     }
 
     required init?(coder: NSCoder) {
@@ -113,28 +114,11 @@ class MessagesHorizontalCell: UICollectionViewCell {
     // MARK: - Updating
 
     @discardableResult
-    func updated(with chat: Chat) -> Self {
-        imageView.image = chat.image
-        nameLabel.text = chat.name
-        messageLabel.text = chat.message
-        dateLabel.text = chat.date
+    func updated(withFullName fullName: String, image: UIImage, message: String, date: String) -> Self {
+        imageView.image = image
+        nameLabel.text = fullName
+        messageLabel.text = message
+        dateLabel.text = date
         return self
     }
 }
-
-extension MessagesHorizontalCell {
-    private func addSeparators() {
-        let top = UIView()
-        top.backgroundColor = .separator
-        top.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(top)
-        NSLayoutConstraint.activate([
-            top.topAnchor.constraint(equalTo: contentView.topAnchor),
-            top.heightAnchor.constraint(equalToConstant: 0.5),
-            top.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            top.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
-    }
-}
-
-typealias Chat = MessagesView.Chat
