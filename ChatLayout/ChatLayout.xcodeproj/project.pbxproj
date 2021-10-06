@@ -10,6 +10,7 @@
 		CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */; };
 		CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */; };
 		CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434C270E29B7006BA2FE /* ChatPreview.swift */; };
+		CE3C94F8270E432B003BD17F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C94F7270E432B003BD17F /* String+.swift */; };
 		CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FF942708DDFD00EBEAC2 /* AppDelegate.swift */; };
 		CE46FF972708DDFD00EBEAC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FF962708DDFD00EBEAC2 /* SceneDelegate.swift */; };
 		CE46FF992708DDFD00EBEAC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FF982708DDFD00EBEAC2 /* ProfileViewController.swift */; };
@@ -35,6 +36,7 @@
 		CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderFooterView.swift; sourceTree = "<group>"; };
 		CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		CE17434C270E29B7006BA2FE /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
+		CE3C94F7270E432B003BD17F /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		CE46FF912708DDFD00EBEAC2 /* ChatLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE46FF942708DDFD00EBEAC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE46FF962708DDFD00EBEAC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				CE46FFB32708E16C00EBEAC2 /* UIEdgeInsets+.swift */,
 				CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */,
 				CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */,
+				CE3C94F7270E432B003BD17F /* String+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			files = (
 				CE46FF992708DDFD00EBEAC2 /* ProfileViewController.swift in Sources */,
 				CED2B0AE270A2460007B6E83 /* Images.swift in Sources */,
+				CE3C94F8270E432B003BD17F /* String+.swift in Sources */,
 				CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */,
 				CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */,
 				CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */,

@@ -26,7 +26,7 @@ class MessagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        mockData()
+        messagesView.update(pinnedChats: ChatPreview.mock(), listedChats: ChatPreview.mock())
     }
 
     // MARK: - Helpers
@@ -54,20 +54,5 @@ class MessagesViewController: UIViewController {
     // MARK: - Actions
 
     private func didSelect(chat: ChatPreview) {
-    }
-}
-
-extension MessagesViewController {
-
-    private func mockData() {
-        let pinned = (0...20).map {
-            ChatPreview(id: "\($0)", firstName: "FirstName \($0)", lastName: "LastName", image: .backIcon, message: "Some message \($0)", date: "19/02/30")
-        }
-
-        let listed = (21...40).map {
-            ChatPreview(id: "\($0)", firstName: "FirstName \($0)", lastName: "LastName", image: .backIcon, message: "Some message \($0)", date: "19/02/30")
-        }
-
-        messagesView.update(pinnedChats: pinned, listedChats: listed)
     }
 }
