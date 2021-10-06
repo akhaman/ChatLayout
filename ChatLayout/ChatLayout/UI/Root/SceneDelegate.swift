@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             toolbarClass: nil
         )
 
-        navigationController.pushViewController(MessagesViewController(), animated: false)
+        navigationController.pushViewController(ProfileViewController(), animated: false)
 
         self.window = window
         window.rootViewController = navigationController
