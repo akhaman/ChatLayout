@@ -26,11 +26,6 @@ class MessagesVerticalCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.layer.cornerRadius = imageView.frame.size.height / 2
-    }
     
     // MARK: - Init
 
@@ -42,6 +37,13 @@ class MessagesVerticalCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Parent Methods
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
     }
 
     // MARK: - Setup Layout

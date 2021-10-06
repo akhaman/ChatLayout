@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
             target: self,
             action: #selector(showMessages)
         )
-        
+
         setupCaptionLabel()
         setupLogoutButton()
     }

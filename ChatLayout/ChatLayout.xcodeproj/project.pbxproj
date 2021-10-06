@@ -69,7 +69,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE17434E270E307C006BA2FE /* Models */ = {
+		CE17434F270E3D5F006BA2FE /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				CE17434C270E29B7006BA2FE /* ChatPreview.swift */,
@@ -107,8 +107,9 @@
 		CE46FFA82708E01F00EBEAC2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CE46FFBC2709F9AB00EBEAC2 /* Constants */,
 				CE46FFA92708E03800EBEAC2 /* Root */,
+				CE17434F270E3D5F006BA2FE /* Models */,
+				CE46FFBC2709F9AB00EBEAC2 /* Constants */,
 				CE46FFB5270905C400EBEAC2 /* Components */,
 				CE46FFAA2708E03F00EBEAC2 /* Modules */,
 			);
@@ -187,7 +188,6 @@
 		CE50AA34270A3B8300BB52AC /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				CE17434E270E307C006BA2FE /* Models */,
 				CE50AA35270A3B9100BB52AC /* MessagesViewController.swift */,
 				CE50AA37270A5A5200BB52AC /* MessagesView.swift */,
 			);
