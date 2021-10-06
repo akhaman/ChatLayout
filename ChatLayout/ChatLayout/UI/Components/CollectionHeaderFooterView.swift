@@ -11,6 +11,8 @@ class CollectionHeaderFooterView: UICollectionReusableView {
 
     private let insets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
 
+    // MARK: - Subviews
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .font(ofSize: 12, forTextStyle: .caption2)
@@ -18,6 +20,8 @@ class CollectionHeaderFooterView: UICollectionReusableView {
         label.textColor = .adaptedFor(light: .pureBlack, dark: .lighterGray)
         return label
     }()
+
+    // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +32,7 @@ class CollectionHeaderFooterView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Helpers
 
     private func setup() {
         addSubview(titleLabel)
@@ -40,6 +45,8 @@ class CollectionHeaderFooterView: UICollectionReusableView {
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom)
         ])
     }
+
+    // MARK: - Updating
 
     @discardableResult
     func updated(with title: String) -> Self {

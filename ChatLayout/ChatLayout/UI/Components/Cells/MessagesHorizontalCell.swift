@@ -9,12 +9,11 @@ import UIKit
 
 class MessagesHorizontalCell: UICollectionViewCell {
 
-    // MARK: - UI
+    // MARK: - Subviews
 
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .lighterGray
-        view.layer.cornerRadius = 40 / 2
         view.layer.masksToBounds = true
         view.contentMode = .scaleToFill
         return view
@@ -65,7 +64,14 @@ class MessagesHorizontalCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup
+    // MARK: - Parent Methods
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.layer.cornerRadius = imageView.frame.height / 2
+    }
+
+    // MARK: - Setup Layout
 
     private func setupImageView() {
         contentView.addSubview(imageView)

@@ -11,6 +11,8 @@ class RoundedButton: UIButton {
 
     private var spacing: CGFloat = .zero
 
+    // MARK: - Init
+
     convenience init(
         title: String,
         image: UIImage? = nil,
@@ -34,6 +36,8 @@ class RoundedButton: UIButton {
         layer.borderWidth = 1
     }
 
+    // MARK: - Parent Methods
+
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.height / 2
@@ -41,7 +45,8 @@ class RoundedButton: UIButton {
     }
 
     override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(width: size.width + spacing, height: size.height)
+        var size = super.intrinsicContentSize
+        size.width += spacing
+        return size
     }
 }

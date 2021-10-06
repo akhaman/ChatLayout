@@ -11,3 +11,13 @@ extension UIImage {
     static let arrowLeft = #imageLiteral(resourceName: "arrowLeft")
     static let backIcon = #imageLiteral(resourceName: "backIcon")
 }
+
+// MARK: - Sample Photos
+
+extension UIImage {
+    static let kim = #imageLiteral(resourceName: "Kim")
+    static let steve = #imageLiteral(resourceName: "Steve")
+    static let mia = #imageLiteral(resourceName: "Mia")
+    static let jessica = #imageLiteral(resourceName: "Jessica")
+}
+
