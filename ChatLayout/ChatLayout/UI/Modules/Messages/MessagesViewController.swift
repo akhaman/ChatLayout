@@ -20,7 +20,7 @@ class MessagesViewController: UIViewController {
 
     override func loadView() {
         view = messagesView
-        messagesView.onSelectChat = { [weak self] in self?.didSelect(chat: $0) }
+        messagesView.onSelectChat = { [unowned self] in didSelect(chat: $0) }
     }
 
     override func viewDidLoad() {
