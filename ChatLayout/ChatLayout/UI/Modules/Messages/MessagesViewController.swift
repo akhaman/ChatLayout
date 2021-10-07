@@ -20,7 +20,7 @@ class MessagesViewController: UIViewController {
 
     override func loadView() {
         view = messagesView
-        messagesView.onSelectChat = { [unowned self] in didSelect(chat: $0) }
+        messagesView.onSelectChat = { [unowned self] in showChat(with: $0) }
     }
 
     override func viewDidLoad() {
@@ -33,6 +33,7 @@ class MessagesViewController: UIViewController {
 
     private func setupView() {
         title = Constants.title
+        navigationItem.backButtonTitle = ""
         navigationItem.largeTitleDisplayMode = .never
         setupSearchBar()
     }
@@ -53,6 +54,8 @@ class MessagesViewController: UIViewController {
 
     // MARK: - Actions
 
-    private func didSelect(chat: ChatPreview) {
+    private func showChat(with preview: ChatPreview) {
+        let controller = ChatViewController(chatPreview: preview)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
