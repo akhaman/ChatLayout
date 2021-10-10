@@ -15,13 +15,15 @@ class TextMessageLayoutCalculator {
         let bubbleFrame = frame(forBubbleWithMessageFrame: messageFrame, isIncoming: model.isIncoming)
         let attributedTime = model.timeText.map { makeAttributedTime(from: $0, isIncoming: model.isIncoming) }
         let timeFrame = attributedTime.map { frame(forTimeLabelWith: $0, bubbleFrame: bubbleFrame) }
+        let avatarFrame = avatarFrame(forCellStyle: model.style)
 
         return Result(
             bubbleFrame: bubbleFrame,
             messageFrame: messageFrame,
             attributedMessage: attributedMessage,
             timeFrame: timeFrame ?? .zero,
-            attributedTime: attributedTime
+            attributedTime: attributedTime,
+            avatarFrame: avatarFrame
         )
     }
 
@@ -84,6 +86,15 @@ class TextMessageLayoutCalculator {
         return frame
     }
 
+    private static func avatarFrame(forCellStyle style: ChatMessageModel.Style) -> CGRect {
+        switch style {
+        case .outgoing:
+            return .zero
+        case .incoming:
+            return CGRect(origin: CGPoint(x: 20, y: .zero), size: ChatAppearance.TextMessage.avatarSize)
+        }
+    }
+
     private static func frame(forMessageLabelWith attributedString: NSAttributedString) -> CGRect {
         let maxBubbleSize = CGSize(width: ChatAppearance.TextMessage.maxBubbleWidth, height: .greatestFiniteMagnitude)
 
@@ -128,5 +139,6 @@ extension TextMessageLayoutCalculator {
         let attributedMessage: NSAttributedString
         let timeFrame: CGRect
         let attributedTime: NSAttributedString?
+        let avatarFrame: CGRect
     }
 }

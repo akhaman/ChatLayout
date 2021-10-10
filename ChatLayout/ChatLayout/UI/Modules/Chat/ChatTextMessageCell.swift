@@ -11,6 +11,13 @@ class ChatTextMessageCell: UICollectionViewCell {
 
     // MARK: - Subviews
 
+    private lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = ChatAppearance.TextMessage.avatarSize.height / 2
+        return imageView
+    }()
+
     private lazy var bubbleContentView: UIView = {
         let view = UIView()
         view.backgroundColor = .socialBlue
@@ -44,6 +51,7 @@ class ChatTextMessageCell: UICollectionViewCell {
     // MARK: - Updating
 
     func updated(withMessage message: ChatMessageModel) -> Self {
+        avatarImageView.image = message.avatarImage
         let result = TextMessageLayoutCalculator.calculate(forMessage: message)
         updateLayout(withResult: result)
         updateBubble(forStyle: message.style)
@@ -53,6 +61,7 @@ class ChatTextMessageCell: UICollectionViewCell {
     // MARK: - Helpers
 
     private func setup() {
+        contentView.addSubview(avatarImageView)
         contentView.addSubview(bubbleContentView)
         bubbleContentView.addSubview(messageTextLabel)
         contentView.addSubview(timeLabel)
@@ -64,6 +73,7 @@ class ChatTextMessageCell: UICollectionViewCell {
         messageTextLabel.attributedText = result.attributedMessage
         timeLabel.frame = result.timeFrame
         timeLabel.attributedText = result.attributedTime
+        avatarImageView.frame = result.avatarFrame
     }
 
     private func updateBubble(forStyle style: ChatMessageModel.Style) {

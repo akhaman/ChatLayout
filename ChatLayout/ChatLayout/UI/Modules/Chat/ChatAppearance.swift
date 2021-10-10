@@ -37,5 +37,7 @@ enum ChatAppearance {
         static let outgoingTimeColor = UIColor.lighterGray
         static let incomingTimeColor = UIColor.adaptedFor(light: .primaryBlack, dark: .lighterGray)
         static let timeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 20, right: 0)
+
+        static let avatarSize = CGSize(width: 24, height: 24)
     }
 }

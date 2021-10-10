@@ -54,6 +54,15 @@ extension ChatMessageModel {
             return false
         }
     }
+
+    var avatarImage: UIImage? {
+        switch style {
+        case .incoming(let author):
+            return author.image
+        case .outgoing:
+            return nil
+        }
+    }
 }
 
 extension ChatMessageModel: Hashable {
