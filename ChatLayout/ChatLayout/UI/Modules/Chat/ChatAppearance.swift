@@ -10,7 +10,7 @@ import UIKit
 enum ChatAppearance {
 
     static let sectionInsets = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
-
+    static let minimumLineSpacing: CGFloat = 4
 
     enum TextMessage {
         static let maxBubbleWidth = UIScreen.main.bounds.width * 0.7
@@ -31,6 +31,6 @@ enum ChatAppearance {
 
         static let timeFont = UIFont.font(ofSize: 12, forTextStyle: .caption2)
         static let timeColor = UIColor.adaptedFor(light: .primaryWhite, dark: .primaryWhite)
-        static let timeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 24, right: 0)
+        static let timeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 20, right: 0)
     }
 }

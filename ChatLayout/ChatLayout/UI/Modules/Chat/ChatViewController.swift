@@ -52,7 +52,7 @@ extension ChatViewController {
                 messages: (0...5).map {
                     ChatMessageModel(
                         messageId: .uuid,
-                        messageText: "Some text for examdfjlksdafj;lkasdjfkl;asdfj;lksdajfl;ksdjfl;sdjf;lksdfj;klsdjf;lksdjfklds;fj;kdlsfj;ldskjf;lsdjfldsjfdsjfl;dsjf;sdjf;sdljf;lasdjf;lsdjf;lsdjf;lsdkjf;lasjf;lasdjf;lasdj;lple \($0)",
+                        messageText: "Some text for \($0)",
                         timeText: nil,
                         style: .outgoing
                     )

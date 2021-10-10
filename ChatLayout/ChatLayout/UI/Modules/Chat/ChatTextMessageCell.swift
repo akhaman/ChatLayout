@@ -63,15 +63,16 @@ class ChatTextMessageCell: UICollectionViewCell {
         messageTextLabel.attributedText = result.attributedMessage
         timeLabel.frame = result.timeFrame
         timeLabel.attributedText = result.attributedTime
-        bubbleContentView.layer.cornerRadius = 6
         updateBubbleForm()
     }
 
     private func updateBubbleForm() {
+        bubbleContentView.layer.cornerRadius = 4
+
         let maskPath = UIBezierPath(
             roundedRect: bubbleContentView.bounds,
             byRoundingCorners: [.topLeft, .topRight, .bottomLeft],
-            cornerRadii: CGSize(width: 18, height: 0)
+            cornerRadii: CGSize(width: 20, height: 0)
         )
 
         let maskLayer = CAShapeLayer()

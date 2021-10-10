@@ -70,6 +70,14 @@ extension ChatView: UICollectionViewDelegateFlowLayout {
         
         return TextMessageLayoutCalculator.size(forCellWithMessage: message)
     }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        ChatAppearance.minimumLineSpacing
+    }
 }
 
 // MARK: - Diffable Data Source
