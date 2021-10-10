@@ -9,8 +9,11 @@ import UIKit
 
 class ChatViewController: UIViewController {
 
-    private let chatPreview: ChatPreview
     private lazy var chatView = ChatView()
+
+    // MARK: - Properties
+
+    private let chatPreview: ChatPreview
 
     // MARK: - Init
 
@@ -50,7 +53,10 @@ class ChatViewController: UIViewController {
     private func setupView() {
         title = chatPreview.firstName
         navigationItem.largeTitleDisplayMode = .never
-        
+        chatView.onSendMessageButtonDidTap = { [unowned self] in send(message: $0) }
+    }
+
+    private func send(message: String) {
     }
 }
 
@@ -72,7 +78,6 @@ extension ChatViewController {
     }
 
     @objc private func handleKeyboardFrameChange(notification: Notification)  {
-
     }
 }
 

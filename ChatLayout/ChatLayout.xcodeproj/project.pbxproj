@@ -103,12 +103,8 @@
 				CE3C94FD270EE30C003BD17F /* ChatViewController.swift */,
 				CE3C94FF270EE31F003BD17F /* ChatView.swift */,
 				CE3C954A2711EA93003BD17F /* ChatModels.swift */,
-				CE3C954E2711EFD4003BD17F /* ChatTextMessageCell.swift */,
 				CE0B7A7327133152001BA2F8 /* ChatAppearance.swift */,
 				CE0B7A7527133175001BA2F8 /* TextMessageLayoutCalculator.swift */,
-				CE0B7A77271362D3001BA2F8 /* ChatDateHeaderView.swift */,
-				CE0B7A7927137E5A001BA2F8 /* ChatInputView.swift */,
-				CE0B7A7B2713880C001BA2F8 /* TextFieldWithInsets.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -197,9 +193,13 @@
 		CE46FFB5270905C400EBEAC2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CE0B7A7B2713880C001BA2F8 /* TextFieldWithInsets.swift */,
 				CE46FFB6270905EA00EBEAC2 /* NavigationBar.swift */,
 				CED2B0AF270A2CAC007B6E83 /* RoundedButton.swift */,
 				CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */,
+				CE0B7A77271362D3001BA2F8 /* ChatDateHeaderView.swift */,
+				CE3C954E2711EFD4003BD17F /* ChatTextMessageCell.swift */,
+				CE0B7A7927137E5A001BA2F8 /* ChatInputView.swift */,
 				CE50AA39270B890B00BB52AC /* Cells */,
 			);
 			path = Components;
