@@ -35,13 +35,48 @@ class ChatViewController: UIViewController {
         chatView.update(withSections: mockData())
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addKeyboardObservers()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeKeyboardObservers()
+    }
+
     // MARK: - Helpers
 
     private func setupView() {
         title = chatPreview.firstName
         navigationItem.largeTitleDisplayMode = .never
+        
     }
 }
+
+// MARK: - Keyboard Hanlding
+
+extension ChatViewController {
+
+    func addKeyboardObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeyboardFrameChange(notification:)),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
+    }
+
+    func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+
+    @objc private func handleKeyboardFrameChange(notification: Notification)  {
+
+    }
+}
+
+// MARK: - Data
 
 extension ChatViewController {
     private func mockData() -> [ChatSectionModel] {

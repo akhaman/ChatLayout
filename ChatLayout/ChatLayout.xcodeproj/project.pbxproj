@@ -10,6 +10,8 @@
 		CE0B7A7427133152001BA2F8 /* ChatAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7327133152001BA2F8 /* ChatAppearance.swift */; };
 		CE0B7A7627133175001BA2F8 /* TextMessageLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7527133175001BA2F8 /* TextMessageLayoutCalculator.swift */; };
 		CE0B7A78271362D3001BA2F8 /* ChatDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A77271362D3001BA2F8 /* ChatDateHeaderView.swift */; };
+		CE0B7A7A27137E5A001BA2F8 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7927137E5A001BA2F8 /* ChatInputView.swift */; };
+		CE0B7A7C2713880C001BA2F8 /* TextFieldWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7B2713880C001BA2F8 /* TextFieldWithInsets.swift */; };
 		CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */; };
 		CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */; };
 		CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434C270E29B7006BA2FE /* ChatPreview.swift */; };
@@ -43,6 +45,8 @@
 		CE0B7A7327133152001BA2F8 /* ChatAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppearance.swift; sourceTree = "<group>"; };
 		CE0B7A7527133175001BA2F8 /* TextMessageLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessageLayoutCalculator.swift; sourceTree = "<group>"; };
 		CE0B7A77271362D3001BA2F8 /* ChatDateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDateHeaderView.swift; sourceTree = "<group>"; };
+		CE0B7A7927137E5A001BA2F8 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		CE0B7A7B2713880C001BA2F8 /* TextFieldWithInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithInsets.swift; sourceTree = "<group>"; };
 		CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderFooterView.swift; sourceTree = "<group>"; };
 		CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		CE17434C270E29B7006BA2FE /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				CE0B7A7327133152001BA2F8 /* ChatAppearance.swift */,
 				CE0B7A7527133175001BA2F8 /* TextMessageLayoutCalculator.swift */,
 				CE0B7A77271362D3001BA2F8 /* ChatDateHeaderView.swift */,
+				CE0B7A7927137E5A001BA2F8 /* ChatInputView.swift */,
+				CE0B7A7B2713880C001BA2F8 /* TextFieldWithInsets.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -312,12 +318,14 @@
 				CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */,
 				CE3C9500270EE31F003BD17F /* ChatView.swift in Sources */,
 				CE3C954F2711EFD4003BD17F /* ChatTextMessageCell.swift in Sources */,
+				CE0B7A7C2713880C001BA2F8 /* TextFieldWithInsets.swift in Sources */,
 				CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */,
 				CE46FFBB2709F9A100EBEAC2 /* Colors.swift in Sources */,
 				CE46FFBE2709FB9E00EBEAC2 /* Fonts.swift in Sources */,
 				CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */,
 				CE50AA38270A5A5200BB52AC /* MessagesView.swift in Sources */,
 				CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */,
+				CE0B7A7A27137E5A001BA2F8 /* ChatInputView.swift in Sources */,
 				CE3C94FE270EE30C003BD17F /* ChatViewController.swift in Sources */,
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
 				CE0B7A7627133175001BA2F8 /* TextMessageLayoutCalculator.swift in Sources */,

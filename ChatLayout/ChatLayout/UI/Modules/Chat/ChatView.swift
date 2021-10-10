@@ -13,14 +13,25 @@ class ChatView: UIView {
     private typealias Section = ChatSectionModel
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatMessageModel>
 
+    // MARK: - Subviews
+
+    private lazy var chatInputView = ChatInputView()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
     private lazy var dataSource = makeDataSource()
+
+    // MARK: - Callbacks
+
+    var onSendMessageButtonDidTap: ((_ text: String) -> Void)? {
+        get { chatInputView.onButtonDidTap }
+        set { chatInputView.onButtonDidTap = newValue }
+    }
 
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupCollectionView()
+        setupLayout()
     }
 
     required init?(coder: NSCoder) {
@@ -29,21 +40,31 @@ class ChatView: UIView {
 
     // MARK: - Setup
 
-    private func setup() {
+    private func setupCollectionView() {
         collectionView.backgroundColor = ChatAppearance.backgroundColor
         collectionView.dataSource = dataSource
         collectionView.delegate = self
 
         collectionView.register(ChatTextMessageCell.self)
         collectionView.register(ChatDateHeaderView.self, withKind: UICollectionView.elementKindSectionHeader)
+    }
 
+    private func setupLayout() {
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(chatInputView)
+        chatInputView.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+
+            chatInputView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            chatInputView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            chatInputView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            chatInputView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
