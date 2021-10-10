@@ -32,12 +32,32 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        chatView.update(withSections: mockData())
     }
 
     // MARK: - Helpers
 
     private func setupView() {
         title = chatPreview.firstName
-        
+        navigationItem.largeTitleDisplayMode = .never
+    }
+}
+
+extension ChatViewController {
+    private func mockData() -> [ChatSectionModel] {
+        (0...10).map { sectionIndex in
+            ChatSectionModel(
+                sectionId: .uuid,
+                dateText: "Date \(sectionIndex)",
+                messages: (0...5).map {
+                    ChatMessageModel(
+                        messageId: .uuid,
+                        messageText: "Some text for examdfjlksdafj;lkasdjfkl;asdfj;lksdajfl;ksdjfl;sdjf;lksdfj;klsdjf;lksdjfklds;fj;kdlsfj;ldskjf;lsdjfldsjfdsjfl;dsjf;sdjf;sdljf;lasdjf;lsdjf;lsdjf;lsdkjf;lasjf;lasdjf;lasdj;lple \($0)",
+                        timeText: nil,
+                        style: .outgoing
+                    )
+                }
+            )
+        }
     }
 }

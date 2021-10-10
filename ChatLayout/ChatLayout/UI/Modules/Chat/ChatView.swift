@@ -7,19 +7,13 @@
 
 import UIKit
 
-typealias ChatMessage = String
-
-struct DailyChatHistory: Hashable {
-
-}
-
 class ChatView: UIView {
 
-    private typealias Item = ChatMessage
-    private typealias Section = DailyChatHistory
-    private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatMessage>
+    private typealias Item = ChatMessageModel
+    private typealias Section = ChatSectionModel
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatMessageModel>
 
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCompositionalLayout())
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
     private lazy var dataSource = makeDataSource()
 
     // MARK: - Init
@@ -38,6 +32,9 @@ class ChatView: UIView {
     private func setup() {
         collectionView.backgroundColor = .adaptedFor(light: .primaryWhite, dark: .primaryBlack)
         collectionView.dataSource = dataSource
+        collectionView.delegate = self
+
+        collectionView.register(ChatTextMessageCell.self)
 
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +46,30 @@ class ChatView: UIView {
         ])
     }
 
+    // MARK: - Updating
+
+    func update(withSections sections: [ChatSectionModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections(sections)
+        sections.forEach { snapshot.appendItems($0.messages, toSection: $0)}
+
+        dataSource.apply(snapshot)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension ChatView: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        guard let message = dataSource.itemIdentifier(for: indexPath) else { return .zero }
+        
+        return TextMessageLayoutCalculator.size(forCellWithMessage: message)
+    }
 }
 
 // MARK: - Diffable Data Source
@@ -56,8 +77,11 @@ class ChatView: UIView {
 extension ChatView {
 
     private func makeDataSource() -> DataSource {
-        // TODO: - Not Implemented
-        fatalError("Not implemented")
+        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, message in
+            collectionView.dequeue(ChatTextMessageCell.self, for: indexPath).updated(withMessage: message)
+        }
+
+        return dataSource
     }
 }
 
@@ -65,8 +89,11 @@ extension ChatView {
 
 extension ChatView {
 
-    private func makeCompositionalLayout() -> UICollectionViewCompositionalLayout {
-        // TODO: - Not Implemented
-        fatalError("Not implemented")
+    private func makeLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = ChatAppearance.sectionInsets
+        layout.scrollDirection = .vertical
+        layout.sectionHeadersPinToVisibleBounds = true
+        return layout
     }
 }

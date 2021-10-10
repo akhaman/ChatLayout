@@ -24,10 +24,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             toolbarClass: nil
         )
 
-        navigationController.pushViewController(ProfileViewController(), animated: false)
+        navigationController.pushViewController(makeVC(), animated: false)
 
         self.window = window
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+
+    func makeVC() -> UIViewController {
+        ChatViewController(
+            chatPreview: .init(
+                id: .uuid,
+                firstName: "Jessica",
+                lastName: "",
+                image: .jessica,
+                message: "Hello",
+                date: ""
+            )
+        )
     }
 }
