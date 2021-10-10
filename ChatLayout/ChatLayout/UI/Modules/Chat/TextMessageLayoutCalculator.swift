@@ -10,10 +10,10 @@ import UIKit
 class TextMessageLayoutCalculator {
 
     static func calculate(forMessage model: ChatMessageModel) -> Result {
-        let attributedMessage = makeAttributedMessage(from: model.messageText)
+        let attributedMessage = makeAttributedMessage(from: model.messageText, isIncoming: model.isIncoming)
         let messageFrame = frame(forMessageLabelWith: attributedMessage)
         let bubbleFrame = frame(forBubbleWithMessageFrame: messageFrame, isIncoming: model.isIncoming)
-        let attributedTime = model.timeText.map { makeAttributedTime(from: $0) }
+        let attributedTime = model.timeText.map { makeAttributedTime(from: $0, isIncoming: model.isIncoming) }
         let timeFrame = attributedTime.map { frame(forTimeLabelWith: $0, bubbleFrame: bubbleFrame) }
 
         return Result(
@@ -50,18 +50,22 @@ class TextMessageLayoutCalculator {
         UIScreen.main.bounds.width
     }
 
-    private static func makeAttributedMessage(from string: String) -> NSAttributedString {
+    private static func makeAttributedMessage(from string: String, isIncoming: Bool) -> NSAttributedString {
         NSAttributedString(string: string, attributes: [
             .font: ChatAppearance.TextMessage.messageFont,
             .paragraphStyle: ChatAppearance.TextMessage.messageParagraphStyle,
-            .foregroundColor: ChatAppearance.TextMessage.messageColor
+            .foregroundColor: isIncoming
+                ? ChatAppearance.TextMessage.incomingMessageColor
+                : ChatAppearance.TextMessage.outgoingMessageColor
         ])
     }
 
-    private static func makeAttributedTime(from string: String) -> NSAttributedString {
+    private static func makeAttributedTime(from string: String, isIncoming: Bool) -> NSAttributedString {
         NSAttributedString(string: string, attributes: [
             .font: ChatAppearance.TextMessage.timeFont,
-            .foregroundColor: ChatAppearance.TextMessage.timeColor
+            .foregroundColor: isIncoming
+                ? ChatAppearance.TextMessage.incomingTimeColor
+                : ChatAppearance.TextMessage.outgoingTimeColor
         ])
     }
 

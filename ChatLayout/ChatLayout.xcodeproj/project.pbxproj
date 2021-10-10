@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE0B7A7427133152001BA2F8 /* ChatAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7327133152001BA2F8 /* ChatAppearance.swift */; };
 		CE0B7A7627133175001BA2F8 /* TextMessageLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7527133175001BA2F8 /* TextMessageLayoutCalculator.swift */; };
+		CE0B7A78271362D3001BA2F8 /* ChatDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A77271362D3001BA2F8 /* ChatDateHeaderView.swift */; };
 		CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */; };
 		CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */; };
 		CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434C270E29B7006BA2FE /* ChatPreview.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		CE0B7A7327133152001BA2F8 /* ChatAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppearance.swift; sourceTree = "<group>"; };
 		CE0B7A7527133175001BA2F8 /* TextMessageLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessageLayoutCalculator.swift; sourceTree = "<group>"; };
+		CE0B7A77271362D3001BA2F8 /* ChatDateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDateHeaderView.swift; sourceTree = "<group>"; };
 		CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderFooterView.swift; sourceTree = "<group>"; };
 		CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		CE17434C270E29B7006BA2FE /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				CE3C954E2711EFD4003BD17F /* ChatTextMessageCell.swift */,
 				CE0B7A7327133152001BA2F8 /* ChatAppearance.swift */,
 				CE0B7A7527133175001BA2F8 /* TextMessageLayoutCalculator.swift */,
+				CE0B7A77271362D3001BA2F8 /* ChatDateHeaderView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				CE3C94FE270EE30C003BD17F /* ChatViewController.swift in Sources */,
 				CE46FFAF2708E08D00EBEAC2 /* UITableView+.swift in Sources */,
 				CE0B7A7627133175001BA2F8 /* TextMessageLayoutCalculator.swift in Sources */,
+				CE0B7A78271362D3001BA2F8 /* ChatDateHeaderView.swift in Sources */,
 				CE50AA3D270BA04900BB52AC /* MessagesVerticalCell.swift in Sources */,
 				CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */,
 				CE50AA3B270B892300BB52AC /* MessagesHorizontalCell.swift in Sources */,

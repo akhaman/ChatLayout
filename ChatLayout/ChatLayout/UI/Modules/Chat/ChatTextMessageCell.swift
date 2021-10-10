@@ -46,6 +46,7 @@ class ChatTextMessageCell: UICollectionViewCell {
     func updated(withMessage message: ChatMessageModel) -> Self {
         let result = TextMessageLayoutCalculator.calculate(forMessage: message)
         updateLayout(withResult: result)
+        updateBubble(forStyle: message.style)
         return self
     }
 
@@ -63,15 +64,27 @@ class ChatTextMessageCell: UICollectionViewCell {
         messageTextLabel.attributedText = result.attributedMessage
         timeLabel.frame = result.timeFrame
         timeLabel.attributedText = result.attributedTime
-        updateBubbleForm()
     }
 
-    private func updateBubbleForm() {
+    private func updateBubble(forStyle style: ChatMessageModel.Style) {
+        let rectCorners: UIRectCorner
+        let bubbleColor: UIColor
+
+        switch style {
+        case .outgoing:
+            rectCorners = [.topLeft, .topRight, .bottomLeft]
+            bubbleColor = ChatAppearance.TextMessage.outgoingBubbleColor
+        case .incoming:
+            rectCorners = [.topRight, .bottomLeft, .bottomRight]
+            bubbleColor = ChatAppearance.TextMessage.incomingBubbleColor
+        }
+
+        bubbleContentView.backgroundColor = bubbleColor
         bubbleContentView.layer.cornerRadius = 4
 
         let maskPath = UIBezierPath(
             roundedRect: bubbleContentView.bounds,
-            byRoundingCorners: [.topLeft, .topRight, .bottomLeft],
+            byRoundingCorners: rectCorners,
             cornerRadii: CGSize(width: 20, height: 0)
         )
 

@@ -30,11 +30,12 @@ class ChatView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        collectionView.backgroundColor = .adaptedFor(light: .primaryWhite, dark: .primaryBlack)
+        collectionView.backgroundColor = ChatAppearance.backgroundColor
         collectionView.dataSource = dataSource
         collectionView.delegate = self
 
         collectionView.register(ChatTextMessageCell.self)
+        collectionView.register(ChatDateHeaderView.self, withKind: UICollectionView.elementKindSectionHeader)
 
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +79,13 @@ extension ChatView: UICollectionViewDelegateFlowLayout {
     ) -> CGFloat {
         ChatAppearance.minimumLineSpacing
     }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: collectionView.frame.width, height: 24)
+    }
 }
 
 // MARK: - Diffable Data Source
@@ -89,6 +97,18 @@ extension ChatView {
             collectionView.dequeue(ChatTextMessageCell.self, for: indexPath).updated(withMessage: message)
         }
 
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            let snapshot = dataSource.snapshot()
+            let section = snapshot.sectionIdentifiers[indexPath.section]
+
+            return collectionView.dequeue(
+                ChatDateHeaderView.self,
+                ofKind: UICollectionView.elementKindSectionHeader,
+                indexPath: indexPath
+            )
+            .updated(withTitle: section.dateText)
+        }
+        
         return dataSource
     }
 }
@@ -102,6 +122,7 @@ extension ChatView {
         layout.sectionInset = ChatAppearance.sectionInsets
         layout.scrollDirection = .vertical
         layout.sectionHeadersPinToVisibleBounds = true
+
         return layout
     }
 }

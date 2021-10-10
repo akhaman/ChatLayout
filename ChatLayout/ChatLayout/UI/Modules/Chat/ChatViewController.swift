@@ -53,8 +53,8 @@ extension ChatViewController {
                     ChatMessageModel(
                         messageId: .uuid,
                         messageText: "Some text for \($0)",
-                        timeText: nil,
-                        style: .outgoing
+                        timeText: "Some time",
+                        style: .incoming(author: .init(image: .jessica))
                     )
                 }
             )
