@@ -13,12 +13,14 @@ class ChatViewController: UIViewController {
 
     // MARK: - Properties
 
-    private let chatPreview: ChatPreview
+    private let chatName: String
+    private let chatProvider: ChatProvider
 
     // MARK: - Init
 
-    init(chatPreview: ChatPreview) {
-        self.chatPreview = chatPreview
+    init(chatName: String, chatProvider: ChatProvider) {
+        self.chatName = chatName
+        self.chatProvider = chatProvider
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,7 +37,7 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        chatView.update(withSections: mockData())
+        chatProvider.loadChatHistory()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -51,20 +53,36 @@ class ChatViewController: UIViewController {
     // MARK: - Helpers
 
     private func setupView() {
-        title = chatPreview.firstName
+        title = chatName
         navigationItem.largeTitleDisplayMode = .never
-        chatView.onSendMessageButtonDidTap = { [unowned self] in send(message: $0) }
+
+        chatView.onSendMessageButtonDidTap = { [unowned self] messageText in
+//            let chatMessage = ChatMessage(messageId: .uuid, date: Date(), messageText: messageText)
+//            chatProvider.send(message: chatMessage)
+        }
+
+        chatProvider.onStateDidChange = { [weak self] state in
+            guard let self = self else { return }
+            let sections = self.mapStateToViewModels(state: state)
+            self.chatView.update(withSections: sections)
+        }
     }
 
-    private func send(message: String) {
+    private func mapStateToViewModels(state: ChatState) -> [ChatSectionViewModel] {
+
+      
+        // TODO: - Not Implemented
+        fatalError("Not implemented")
     }
+
+
 }
 
 // MARK: - Keyboard Hanlding
 
 extension ChatViewController {
 
-    func addKeyboardObservers() {
+    private func addKeyboardObservers() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleKeyboardFrameChange(notification:)),
@@ -73,31 +91,10 @@ extension ChatViewController {
         )
     }
 
-    func removeKeyboardObservers() {
+    private func removeKeyboardObservers() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
     @objc private func handleKeyboardFrameChange(notification: Notification)  {
-    }
-}
-
-// MARK: - Data
-
-extension ChatViewController {
-    private func mockData() -> [ChatSectionModel] {
-        (0...10).map { sectionIndex in
-            ChatSectionModel(
-                sectionId: .uuid,
-                dateText: "Date \(sectionIndex)",
-                messages: (0...5).map {
-                    ChatMessageModel(
-                        messageId: .uuid,
-                        messageText: "Some text for \($0)",
-                        timeText: "Some time",
-                        style: .incoming(author: .init(image: .jessica))
-                    )
-                }
-            )
-        }
     }
 }

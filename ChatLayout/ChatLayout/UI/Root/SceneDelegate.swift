@@ -32,15 +32,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func makeVC() -> UIViewController {
-        ChatViewController(
-            chatPreview: .init(
-                id: .uuid,
-                firstName: "Jessica",
-                lastName: "",
-                image: .jessica,
-                message: "Hello",
-                date: ""
-            )
-        )
+        ChatViewController(chatName: "Jessica", chatProvider: ChatProviderImpl())
     }
 }

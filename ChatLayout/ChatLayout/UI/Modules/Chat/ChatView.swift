@@ -9,9 +9,9 @@ import UIKit
 
 class ChatView: UIView {
 
-    private typealias Item = ChatMessageModel
-    private typealias Section = ChatSectionModel
-    private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatMessageModel>
+    private typealias Item = ChatMessageViewModel
+    private typealias Section = ChatSectionViewModel
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatMessageViewModel>
 
     // MARK: - Subviews
 
@@ -70,7 +70,7 @@ class ChatView: UIView {
 
     // MARK: - Updating
 
-    func update(withSections sections: [ChatSectionModel]) {
+    func update(withSections sections: [ChatSectionViewModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections(sections)
         sections.forEach { snapshot.appendItems($0.messages, toSection: $0)}

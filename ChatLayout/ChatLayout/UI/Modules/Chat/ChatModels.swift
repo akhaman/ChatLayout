@@ -7,17 +7,17 @@
 
 import UIKit
 
-// MARK: - ChatSectionModel
+// MARK: - ChatSectionViewModel
 
-struct ChatSectionModel {
+struct ChatSectionViewModel {
     let sectionId: String
     let dateText: String
-    let messages: [ChatMessageModel]
+    let messages: [ChatMessageViewModel]
 }
 
-extension ChatSectionModel: Hashable {
+extension ChatSectionViewModel: Hashable {
 
-    static func == (lhs: ChatSectionModel, rhs: ChatSectionModel) -> Bool {
+    static func == (lhs: ChatSectionViewModel, rhs: ChatSectionViewModel) -> Bool {
         lhs.sectionId == rhs.sectionId
     }
 
@@ -26,9 +26,12 @@ extension ChatSectionModel: Hashable {
     }
 }
 
-// MARK: - ChatMessageModel
+extension ChatSectionViewModel {
+}
 
-struct ChatMessageModel {
+// MARK: - ChatMessageViewModel
+
+struct ChatMessageViewModel {
     let messageId: String
     let messageText: String
     let timeText: String?
@@ -44,7 +47,7 @@ struct ChatMessageModel {
     }
 }
 
-extension ChatMessageModel {
+extension ChatMessageViewModel {
 
     var isIncoming: Bool {
         switch style {
@@ -65,9 +68,9 @@ extension ChatMessageModel {
     }
 }
 
-extension ChatMessageModel: Hashable {
+extension ChatMessageViewModel: Hashable {
 
-    static func == (lhs: ChatMessageModel, rhs: ChatMessageModel) -> Bool {
+    static func == (lhs: ChatMessageViewModel, rhs: ChatMessageViewModel) -> Bool {
         lhs.messageId == rhs.messageId
     }
 

@@ -9,7 +9,7 @@ import UIKit
 
 class TextMessageLayoutCalculator {
 
-    static func calculate(forMessage model: ChatMessageModel) -> Result {
+    static func calculate(forMessage model: ChatMessageViewModel) -> Result {
         let attributedMessage = makeAttributedMessage(from: model.messageText, isIncoming: model.isIncoming)
         let messageFrame = frame(forMessageLabelWith: attributedMessage)
         let bubbleFrame = frame(forBubbleWithMessageFrame: messageFrame, isIncoming: model.isIncoming)
@@ -27,7 +27,7 @@ class TextMessageLayoutCalculator {
         )
     }
 
-    static func size(forCellWithMessage message: ChatMessageModel) -> CGSize {
+    static func size(forCellWithMessage message: ChatMessageViewModel) -> CGSize {
         let result = calculate(forMessage: message)
         let bottomOffset = result.attributedTime == nil ? .zero : ChatAppearance.TextMessage.timeInsets.bottom
         let cellHeight = result.bubbleFrame.height + result.timeFrame.height + bottomOffset
@@ -86,7 +86,7 @@ class TextMessageLayoutCalculator {
         return frame
     }
 
-    private static func avatarFrame(forCellStyle style: ChatMessageModel.Style) -> CGRect {
+    private static func avatarFrame(forCellStyle style: ChatMessageViewModel.Style) -> CGRect {
         switch style {
         case .outgoing:
             return .zero

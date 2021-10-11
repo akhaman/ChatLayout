@@ -50,7 +50,7 @@ class ChatTextMessageCell: UICollectionViewCell {
 
     // MARK: - Updating
 
-    func updated(withMessage message: ChatMessageModel) -> Self {
+    func updated(withMessage message: ChatMessageViewModel) -> Self {
         avatarImageView.image = message.avatarImage
         let result = TextMessageLayoutCalculator.calculate(forMessage: message)
         updateLayout(withResult: result)
@@ -76,7 +76,7 @@ class ChatTextMessageCell: UICollectionViewCell {
         avatarImageView.frame = result.avatarFrame
     }
 
-    private func updateBubble(forStyle style: ChatMessageModel.Style) {
+    private func updateBubble(forStyle style: ChatMessageViewModel.Style) {
         let rectCorners: UIRectCorner
         let bubbleColor: UIColor
 
