@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChatMessage: Dated {
+struct ReceivedMessage: Dated {
     let messageId: String
     let date: Date
     let messageText: String

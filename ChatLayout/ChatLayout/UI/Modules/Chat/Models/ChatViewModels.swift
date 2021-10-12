@@ -7,30 +7,36 @@
 
 import UIKit
 
-// MARK: - ChatSectionViewModel
+// MARK: - ChatMessagesGroup
 
-struct ChatSectionViewModel: Hashable {
-    let sectionId: String
-    let dateText: String
-    let messages: [ChatMessageViewModel]
+struct ChatMessagesGroup {
+    let sectionId: ChatSectionIdentifier
+    let messageItems: [ChatMessageItem]
 }
 
-// MARK: - ChatMessageViewModel
+// MARK: - ChatSectionIdentifier
 
-struct ChatMessageViewModel: Hashable {
+struct ChatSectionIdentifier: Hashable {
+    let sectionId: String
+    let dateText: String
+}
+
+// MARK: - ChatMessageItem
+
+struct ChatMessageItem: Hashable {
     let messageId: String
     let messageText: String
     let timeText: String?
     let style: Style
 }
 
-extension ChatMessageViewModel {
+extension ChatMessageItem {
 
     enum Style: Hashable {
         case incoming(author: Author)
         case outgoing
 
-        static func == (lhs: ChatMessageViewModel.Style, rhs: ChatMessageViewModel.Style) -> Bool {
+        static func == (lhs: ChatMessageItem.Style, rhs: ChatMessageItem.Style) -> Bool {
             switch (lhs, rhs) {
             case (.outgoing, .outgoing):
                 return true
@@ -47,7 +53,7 @@ extension ChatMessageViewModel {
     }
 }
 
-extension ChatMessageViewModel {
+extension ChatMessageItem {
 
     var isIncoming: Bool {
         switch style {

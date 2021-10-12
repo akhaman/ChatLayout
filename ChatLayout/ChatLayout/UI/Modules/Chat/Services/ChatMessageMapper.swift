@@ -8,50 +8,40 @@
 import Foundation
 
 protocol ChatMessageMapperProtocol {
-    func map(chatMessages: [ChatMessage]) -> [ChatSectionViewModel]
+    func map(chatMessages: [ReceivedMessage]) -> [ChatMessagesGroup]
 }
 
 class ChatMessageMapper: ChatMessageMapperProtocol {
 
-    func map(chatMessages: [ChatMessage]) -> [ChatSectionViewModel] {
+    func map(chatMessages: [ReceivedMessage]) -> [ChatMessagesGroup] {
         chatMessages.groupedBy(dateComponents: .year, .month, .day)
             .sorted { $0.key > $1.key }
             .map { date, messages in
-                ChatSectionViewModel(
-                    sectionId: formattedDate(from: date),
-                    dateText: formattedDate(from: date),
-                    messages: messageViewModels(from: messages)
+                ChatMessagesGroup(
+                    sectionId: ChatSectionIdentifier(sectionId: .uuid, dateText: formattedDate(from: date)),
+                    messageItems: messageItems(from: messages)
                 )
             }
     }
 
-    func append(chatMessage: ChatMessage, intoExistingMessages: [ChatMessage]) {
-        
-    }
-
     // MARK: - Helpers
 
-    private func messageViewModels(from messages: [ChatMessage]) -> [ChatMessageViewModel] {
+    private func messageItems(from messages: [ReceivedMessage]) -> [ChatMessageItem] {
         messages.segmented.map { previous, current, next in
-            let showsTime: Bool
-
-            if let next = next {
-                if current.sender != next.sender {
-                    showsTime = true
-                } else {
-                    showsTime = !current.date.equals(with: next.date, by: .hour, .minute)
-                }
-            } else {
-                showsTime = true
-            }
-
-            return ChatMessageViewModel(
+            ChatMessageItem(
                 messageId: current.messageId,
                 messageText: current.messageText,
-                timeText: showsTime ? formatTime(from: current.date) : nil,
+                timeText: showsTime(current: current, next: next) ? formatTime(from: current.date) : nil,
                 style: style(from: current.sender)
             )
         }
+    }
+
+    private func showsTime(current: ReceivedMessage, next: ReceivedMessage?) -> Bool {
+        guard let next = next,
+              current.sender != next.sender else { return true }
+
+        return !current.date.equals(with: next.date, by: .hour, .minute)
     }
 
     private func formattedDate(from date: Date) -> String {
@@ -62,7 +52,7 @@ class ChatMessageMapper: ChatMessageMapperProtocol {
         Self.timeFormatter.string(from: date)
     }
 
-    private func style(from sender: ChatMessage.Sender) -> ChatMessageViewModel.Style {
+    private func style(from sender: ReceivedMessage.Sender) -> ChatMessageItem.Style {
         switch sender {
         case .incoming:
             return .incoming(author: .init(image: .jessica))
@@ -78,6 +68,7 @@ extension ChatMessageMapper {
 
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy"
         return formatter
     }()
 

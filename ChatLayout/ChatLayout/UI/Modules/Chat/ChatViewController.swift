@@ -60,8 +60,8 @@ class ChatViewController: UIViewController {
             chatProvider.send(messageText: messageText)
         }
 
-        chatProvider.observeMessages { [weak self] sections in
-            self?.chatView.reload(withSections: sections)
+        chatProvider.observeMessages { [weak self] groups in
+            self?.chatView.reload(groups: groups)
             self?.chatView.scrollToLastMessage()
         }
     }

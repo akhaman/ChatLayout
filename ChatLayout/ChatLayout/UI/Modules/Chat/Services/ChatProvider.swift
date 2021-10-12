@@ -10,8 +10,7 @@ import Foundation
 protocol ChatProviderProtocol: AnyObject {
     func loadChatHistory()
     func send(messageText: String)
-
-    func observeMessages(_ callback: @escaping (_ messages: [ChatSectionViewModel]) -> Void)
+    func observeMessages(_ callback: @escaping (_ messages: [ChatMessagesGroup]) -> Void)
 }
 
 class ChatProvider: ChatProviderProtocol {
@@ -20,15 +19,15 @@ class ChatProvider: ChatProviderProtocol {
 
     // MARK: - Callbacks
 
-    private var onMessagesReceived: ((_ messages: [ChatSectionViewModel]) -> Void)?
+    private var onMessagesReceived: ((_ messages: [ChatMessagesGroup]) -> Void)?
 
-    func observeMessages(_ callback: @escaping ([ChatSectionViewModel]) -> Void) {
+    func observeMessages(_ callback: @escaping ([ChatMessagesGroup]) -> Void) {
         onMessagesReceived = callback
     }
 
     // MARK: - State
 
-    private var chatHistory: [ChatMessage] = []
+    private var chatHistory: [ReceivedMessage] = []
 
     // MARK: - Init
 
@@ -39,13 +38,12 @@ class ChatProvider: ChatProviderProtocol {
     // MARK: - Actions
 
     func loadChatHistory() {
-
     }
 
     func send(messageText: String) {
-        let message = ChatMessage(messageId: .uuid, date: .now, messageText: messageText, sender: .currentUser)
+        let message = ReceivedMessage(messageId: .uuid, date: .now, messageText: messageText, sender: .currentUser)
         chatHistory.append(message)
-        let sections = messageMapper.map(chatMessages: chatHistory)
-        onMessagesReceived?(sections)
+        let messageModels = messageMapper.map(chatMessages: chatHistory)
+        onMessagesReceived?(messageModels)
     }
 }
