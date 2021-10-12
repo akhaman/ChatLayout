@@ -7,30 +7,33 @@
 
 import Foundation
 
-struct ChatState {
-    var messages: [ChatMessage]
-}
-
-protocol ChatProvider: AnyObject {
-    var onStateDidChange: ((_ state: ChatState) -> Void)? { get set }
+protocol ChatProviderProtocol: AnyObject {
     func loadChatHistory()
-    func send(message: ChatMessage)
+    func send(messageText: String)
+
+    func observeMessages(_ callback: @escaping (_ messages: [ChatSectionViewModel]) -> Void)
 }
 
-class ChatProviderImpl: ChatProvider {
+class ChatProvider: ChatProviderProtocol {
 
-    // MARK: - StateObserving
+    private let messageMapper: ChatMessageMapperProtocol
 
-    var onStateDidChange: ((_ state: ChatState) -> Void)?
+    // MARK: - Callbacks
+
+    private var onMessagesReceived: ((_ messages: [ChatSectionViewModel]) -> Void)?
+
+    func observeMessages(_ callback: @escaping ([ChatSectionViewModel]) -> Void) {
+        onMessagesReceived = callback
+    }
 
     // MARK: - State
 
-    private var chatState: ChatState
+    private var chatHistory: [ChatMessage] = []
 
     // MARK: - Init
 
-    init() {
-        chatState = ChatState(messages: [])
+    init(messageMapper: ChatMessageMapperProtocol = ChatMessageMapper()) {
+        self.messageMapper = messageMapper
     }
 
     // MARK: - Actions
@@ -39,8 +42,10 @@ class ChatProviderImpl: ChatProvider {
 
     }
 
-    func send(message: ChatMessage) {
-        chatState.messages.append(message)
-        onStateDidChange?(chatState)
+    func send(messageText: String) {
+        let message = ChatMessage(messageId: .uuid, date: .now, messageText: messageText, sender: .currentUser)
+        chatHistory.append(message)
+        let sections = messageMapper.map(chatMessages: chatHistory)
+        onMessagesReceived?(sections)
     }
 }

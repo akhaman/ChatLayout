@@ -70,12 +70,34 @@ class ChatView: UIView {
 
     // MARK: - Updating
 
-    func update(withSections sections: [ChatSectionViewModel]) {
+    func reload(withSections sections: [ChatSectionViewModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections(sections)
         sections.forEach { snapshot.appendItems($0.messages, toSection: $0)}
 
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+
+    func update(sections: [ChatSectionViewModel]) {
+        var snapshot = dataSource.snapshot()
+
+        sections.forEach { section in
+            if snapshot.sectionIdentifiers.contains(section) {
+                snapshot.appendItems(section.messages)
+            } else {
+                snapshot.appendSections([section])
+                snapshot.appendItems(section.messages, toSection: section)
+            }
+        }
+
         dataSource.apply(snapshot)
+    }
+
+    func scrollToLastMessage() {
+        let section = max(0, collectionView.numberOfSections - 1)
+        let item = max(0, collectionView.numberOfItems(inSection: section) - 1)
+
+        collectionView.scrollToItem(at: IndexPath(item: item, section: section), at: .bottom, animated: true)
     }
 }
 
@@ -134,7 +156,7 @@ extension ChatView {
     }
 }
 
-// MARK: - Compostional Layout
+// MARK: - Compositional Layout
 
 extension ChatView {
 

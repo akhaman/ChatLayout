@@ -94,5 +94,6 @@ class ChatInputView: UIView {
     @objc private func buttonDidTap() {
         guard let text = textField.text, !text.isEmpty else { return }
         onButtonDidTap?(text)
+        textField.text = ""
     }
 }

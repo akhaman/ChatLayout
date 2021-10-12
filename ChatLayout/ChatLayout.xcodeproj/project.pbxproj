@@ -14,6 +14,9 @@
 		CE0B7A7C2713880C001BA2F8 /* TextFieldWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7B2713880C001BA2F8 /* TextFieldWithInsets.swift */; };
 		CE0B7A7E27142EA7001BA2F8 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7D27142EA7001BA2F8 /* ChatMessage.swift */; };
 		CE0B7A802714301A001BA2F8 /* ChatProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A7F2714301A001BA2F8 /* ChatProvider.swift */; };
+		CE0B7A8F2714BBBB001BA2F8 /* ChatMessageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A8E2714BBBB001BA2F8 /* ChatMessageMapper.swift */; };
+		CE0B7A932714E60B001BA2F8 /* Sequence+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A922714E60B001BA2F8 /* Sequence+.swift */; };
+		CE0B7A952714E638001BA2F8 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A942714E638001BA2F8 /* Date+.swift */; };
 		CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */; };
 		CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */; };
 		CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434C270E29B7006BA2FE /* ChatPreview.swift */; };
@@ -51,6 +54,9 @@
 		CE0B7A7B2713880C001BA2F8 /* TextFieldWithInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithInsets.swift; sourceTree = "<group>"; };
 		CE0B7A7D27142EA7001BA2F8 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		CE0B7A7F2714301A001BA2F8 /* ChatProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProvider.swift; sourceTree = "<group>"; };
+		CE0B7A8E2714BBBB001BA2F8 /* ChatMessageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageMapper.swift; sourceTree = "<group>"; };
+		CE0B7A922714E60B001BA2F8 /* Sequence+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+.swift"; sourceTree = "<group>"; };
+		CE0B7A942714E638001BA2F8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderFooterView.swift; sourceTree = "<group>"; };
 		CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		CE17434C270E29B7006BA2FE /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 				CE0B7A7527133175001BA2F8 /* TextMessageLayoutCalculator.swift */,
 				CE0B7A7F2714301A001BA2F8 /* ChatProvider.swift */,
 				CE0B7A7D27142EA7001BA2F8 /* ChatMessage.swift */,
+				CE0B7A8E2714BBBB001BA2F8 /* ChatMessageMapper.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -200,6 +207,8 @@
 				CE46FFC1270A147F00EBEAC2 /* UIColor+.swift */,
 				CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */,
 				CE3C94F7270E432B003BD17F /* String+.swift */,
+				CE0B7A922714E60B001BA2F8 /* Sequence+.swift */,
+				CE0B7A942714E638001BA2F8 /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -332,6 +341,7 @@
 				CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */,
 				CE0B7A7E27142EA7001BA2F8 /* ChatMessage.swift in Sources */,
 				CE3C9500270EE31F003BD17F /* ChatView.swift in Sources */,
+				CE0B7A952714E638001BA2F8 /* Date+.swift in Sources */,
 				CE3C954F2711EFD4003BD17F /* ChatTextMessageCell.swift in Sources */,
 				CE0B7A7C2713880C001BA2F8 /* TextFieldWithInsets.swift in Sources */,
 				CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */,
@@ -339,6 +349,7 @@
 				CE46FFBE2709FB9E00EBEAC2 /* Fonts.swift in Sources */,
 				CE46FFB42708E16C00EBEAC2 /* UIEdgeInsets+.swift in Sources */,
 				CE50AA38270A5A5200BB52AC /* MessagesView.swift in Sources */,
+				CE0B7A8F2714BBBB001BA2F8 /* ChatMessageMapper.swift in Sources */,
 				CE46FFC2270A147F00EBEAC2 /* UIColor+.swift in Sources */,
 				CE0B7A7A27137E5A001BA2F8 /* ChatInputView.swift in Sources */,
 				CE3C94FE270EE30C003BD17F /* ChatViewController.swift in Sources */,
@@ -351,6 +362,7 @@
 				CE50AA3B270B892300BB52AC /* MessagesHorizontalCell.swift in Sources */,
 				CE50AA36270A3B9100BB52AC /* MessagesViewController.swift in Sources */,
 				CE46FF952708DDFD00EBEAC2 /* AppDelegate.swift in Sources */,
+				CE0B7A932714E60B001BA2F8 /* Sequence+.swift in Sources */,
 				CE46FFB7270905EA00EBEAC2 /* NavigationBar.swift in Sources */,
 				CE46FF972708DDFD00EBEAC2 /* SceneDelegate.swift in Sources */,
 				CE46FFB02708E08D00EBEAC2 /* UICollectionView+.swift in Sources */,

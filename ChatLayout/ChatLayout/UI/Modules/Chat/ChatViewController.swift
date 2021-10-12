@@ -14,11 +14,11 @@ class ChatViewController: UIViewController {
     // MARK: - Properties
 
     private let chatName: String
-    private let chatProvider: ChatProvider
+    private let chatProvider: ChatProviderProtocol
 
     // MARK: - Init
 
-    init(chatName: String, chatProvider: ChatProvider) {
+    init(chatName: String, chatProvider: ChatProviderProtocol) {
         self.chatName = chatName
         self.chatProvider = chatProvider
         super.init(nibName: nil, bundle: nil)
@@ -57,28 +57,17 @@ class ChatViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
 
         chatView.onSendMessageButtonDidTap = { [unowned self] messageText in
-//            let chatMessage = ChatMessage(messageId: .uuid, date: Date(), messageText: messageText)
-//            chatProvider.send(message: chatMessage)
+            chatProvider.send(messageText: messageText)
         }
 
-        chatProvider.onStateDidChange = { [weak self] state in
-            guard let self = self else { return }
-            let sections = self.mapStateToViewModels(state: state)
-            self.chatView.update(withSections: sections)
+        chatProvider.observeMessages { [weak self] sections in
+            self?.chatView.reload(withSections: sections)
+            self?.chatView.scrollToLastMessage()
         }
     }
-
-    private func mapStateToViewModels(state: ChatState) -> [ChatSectionViewModel] {
-
-      
-        // TODO: - Not Implemented
-        fatalError("Not implemented")
-    }
-
-
 }
 
-// MARK: - Keyboard Hanlding
+// MARK: - Keyboard Handling
 
 extension ChatViewController {
 

@@ -9,40 +9,40 @@ import UIKit
 
 // MARK: - ChatSectionViewModel
 
-struct ChatSectionViewModel {
+struct ChatSectionViewModel: Hashable {
     let sectionId: String
     let dateText: String
     let messages: [ChatMessageViewModel]
 }
 
-extension ChatSectionViewModel: Hashable {
-
-    static func == (lhs: ChatSectionViewModel, rhs: ChatSectionViewModel) -> Bool {
-        lhs.sectionId == rhs.sectionId
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(sectionId)
-    }
-}
-
-extension ChatSectionViewModel {
-}
-
 // MARK: - ChatMessageViewModel
 
-struct ChatMessageViewModel {
+struct ChatMessageViewModel: Hashable {
     let messageId: String
     let messageText: String
     let timeText: String?
     let style: Style
+}
 
-    enum Style {
+extension ChatMessageViewModel {
+
+    enum Style: Hashable {
         case incoming(author: Author)
         case outgoing
+
+        static func == (lhs: ChatMessageViewModel.Style, rhs: ChatMessageViewModel.Style) -> Bool {
+            switch (lhs, rhs) {
+            case (.outgoing, .outgoing):
+                return true
+            case (.incoming(let author), .incoming(let author2)):
+                return author == author2
+            default:
+                return false
+            }
+        }
     }
 
-    struct Author {
+    struct Author: Hashable {
         let image: UIImage
     }
 }
@@ -65,16 +65,5 @@ extension ChatMessageViewModel {
         case .outgoing:
             return nil
         }
-    }
-}
-
-extension ChatMessageViewModel: Hashable {
-
-    static func == (lhs: ChatMessageViewModel, rhs: ChatMessageViewModel) -> Bool {
-        lhs.messageId == rhs.messageId
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(messageId)
     }
 }
