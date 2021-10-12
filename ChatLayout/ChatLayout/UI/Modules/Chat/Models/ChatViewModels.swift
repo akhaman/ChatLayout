@@ -27,29 +27,12 @@ struct ChatMessageItem: Hashable {
     let messageId: String
     let messageText: String
     let timeText: String?
+    let authorImage: UIImage?
     let style: Style
-}
 
-extension ChatMessageItem {
-
-    enum Style: Hashable {
-        case incoming(author: Author)
+    enum Style {
+        case incoming
         case outgoing
-
-        static func == (lhs: ChatMessageItem.Style, rhs: ChatMessageItem.Style) -> Bool {
-            switch (lhs, rhs) {
-            case (.outgoing, .outgoing):
-                return true
-            case (.incoming(let author), .incoming(let author2)):
-                return author == author2
-            default:
-                return false
-            }
-        }
-    }
-
-    struct Author: Hashable {
-        let image: UIImage
     }
 }
 
@@ -61,15 +44,6 @@ extension ChatMessageItem {
             return true
         case .outgoing:
             return false
-        }
-    }
-
-    var avatarImage: UIImage? {
-        switch style {
-        case .incoming(let author):
-            return author.image
-        case .outgoing:
-            return nil
         }
     }
 }

@@ -17,6 +17,7 @@
 		CE0B7A8F2714BBBB001BA2F8 /* ChatMessageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A8E2714BBBB001BA2F8 /* ChatMessageMapper.swift */; };
 		CE0B7A932714E60B001BA2F8 /* Sequence+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A922714E60B001BA2F8 /* Sequence+.swift */; };
 		CE0B7A952714E638001BA2F8 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B7A942714E638001BA2F8 /* Date+.swift */; };
+		CE0B7A9B2715FA6D001BA2F8 /* ChatHistoryMock.json in Resources */ = {isa = PBXBuildFile; fileRef = CE0B7A9A2715FA6D001BA2F8 /* ChatHistoryMock.json */; };
 		CE174343270DC041006BA2FE /* CollectionHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */; };
 		CE17434B270E2395006BA2FE /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */; };
 		CE17434D270E29B7006BA2FE /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17434C270E29B7006BA2FE /* ChatPreview.swift */; };
@@ -57,6 +58,7 @@
 		CE0B7A8E2714BBBB001BA2F8 /* ChatMessageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageMapper.swift; sourceTree = "<group>"; };
 		CE0B7A922714E60B001BA2F8 /* Sequence+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+.swift"; sourceTree = "<group>"; };
 		CE0B7A942714E638001BA2F8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		CE0B7A9A2715FA6D001BA2F8 /* ChatHistoryMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChatHistoryMock.json; sourceTree = "<group>"; };
 		CE174342270DC041006BA2FE /* CollectionHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderFooterView.swift; sourceTree = "<group>"; };
 		CE17434A270E2395006BA2FE /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		CE17434C270E29B7006BA2FE /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				CE46FFBF270A00B700EBEAC2 /* Habibi-Regular.otf */,
 				CE46FF9D2708DDFF00EBEAC2 /* Assets.xcassets */,
+				CE0B7A9A2715FA6D001BA2F8 /* ChatHistoryMock.json */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0B7A9B2715FA6D001BA2F8 /* ChatHistoryMock.json in Resources */,
 				CE46FFA12708DDFF00EBEAC2 /* LaunchScreen.storyboard in Resources */,
 				CE46FFC0270A00B700EBEAC2 /* Habibi-Regular.otf in Resources */,
 				CE46FF9E2708DDFF00EBEAC2 /* Assets.xcassets in Resources */,

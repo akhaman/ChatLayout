@@ -11,10 +11,5 @@ struct ReceivedMessage: Dated {
     let messageId: String
     let date: Date
     let messageText: String
-    let sender: Sender
-
-    enum Sender {
-        case currentUser
-        case incoming
-    }
+    let authorId: String
 }

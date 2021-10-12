@@ -31,7 +31,7 @@ class ChatProvider: ChatProviderProtocol {
 
     // MARK: - Init
 
-    init(messageMapper: ChatMessageMapperProtocol = ChatMessageMapper()) {
+    init(messageMapper: ChatMessageMapperProtocol) {
         self.messageMapper = messageMapper
     }
 
@@ -41,7 +41,7 @@ class ChatProvider: ChatProviderProtocol {
     }
 
     func send(messageText: String) {
-        let message = ReceivedMessage(messageId: .uuid, date: .now, messageText: messageText, sender: .currentUser)
+        let message = ReceivedMessage(messageId: .uuid, date: .now, messageText: messageText, authorId: "")
         chatHistory.append(message)
         let messageModels = messageMapper.map(chatMessages: chatHistory)
         onMessagesReceived?(messageModels)

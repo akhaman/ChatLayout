@@ -51,7 +51,7 @@ class ChatTextMessageCell: UICollectionViewCell {
     // MARK: - Updating
 
     func updated(withMessage message: ChatMessageItem) -> Self {
-        avatarImageView.image = message.avatarImage
+        avatarImageView.image = message.authorImage
         let result = TextMessageLayoutCalculator.calculate(forMessage: message)
         updateLayout(withResult: result)
         updateBubble(forStyle: message.style)
