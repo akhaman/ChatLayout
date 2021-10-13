@@ -29,7 +29,7 @@ struct ChatMessageItem: Hashable {
     let timeText: String?
     let authorImage: UIImage?
     let style: Style
-
+    
     enum Style {
         case incoming
         case outgoing

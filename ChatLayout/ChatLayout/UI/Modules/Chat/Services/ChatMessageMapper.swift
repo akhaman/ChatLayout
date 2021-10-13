@@ -34,17 +34,18 @@ class ChatMessageMapper: ChatMessageMapperProtocol {
 
     private func messageItems(from messages: [ReceivedMessage]) -> [ChatMessageItem] {
         messages.segmented.map { previous, current, next in
-            ChatMessageItem(
+            let isLastInGroup = isLastInGroup(current: current, next: next)
+            return ChatMessageItem(
                 messageId: current.messageId,
                 messageText: current.messageText,
-                timeText: isLastInBlock(current: current, next: next) ? formatTime(from: current.date) : nil,
-                authorImage: isLastInBlock(current: current, next: next) ? .jessica : nil,
+                timeText: isLastInGroup ? formatTime(from: current.date) : nil,
+                authorImage: isLastInGroup ? .jessica : nil,
                 style: current.authorId == currentUserId ? .outgoing : .incoming
             )
         }
     }
 
-    private func isLastInBlock(current: ReceivedMessage, next: ReceivedMessage?) -> Bool {
+    private func isLastInGroup(current: ReceivedMessage, next: ReceivedMessage?) -> Bool {
         guard let next = next else { return true }
 
         if  current.authorId == next.authorId {

@@ -89,7 +89,7 @@ class ChatView: UIView {
     }
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - CollectionViewDelegate
 
 extension ChatView: UICollectionViewDelegateFlowLayout {
 
@@ -119,7 +119,7 @@ extension ChatView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - Diffable Data Source
+// MARK: - DiffableDataSource
 
 extension ChatView {
 
@@ -139,12 +139,12 @@ extension ChatView {
             )
             .updated(withTitle: section.dateText)
         }
-        
+
         return dataSource
     }
 }
 
-// MARK: - Compositional Layout
+// MARK: - CollectionViewLayout
 
 extension ChatView {
 

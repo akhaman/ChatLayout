@@ -20,7 +20,7 @@ class ChatTextMessageCell: UICollectionViewCell {
 
     private lazy var bubbleContentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .socialBlue
+        view.layer.cornerRadius = 4
         return view
     }()
 
@@ -36,6 +36,13 @@ class ChatTextMessageCell: UICollectionViewCell {
         label.adjustsFontForContentSizeCategory = true
         return label
     }()
+
+    // MARK: - Parent Methods
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bubbleContentView.layer.mask = nil
+    }
 
     // MARK: - Init
 
@@ -89,17 +96,16 @@ class ChatTextMessageCell: UICollectionViewCell {
             bubbleColor = ChatAppearance.TextMessage.incomingBubbleColor
         }
 
-        bubbleContentView.backgroundColor = bubbleColor
-        bubbleContentView.layer.cornerRadius = 4
-
         let maskPath = UIBezierPath(
             roundedRect: bubbleContentView.bounds,
             byRoundingCorners: rectCorners,
-            cornerRadii: CGSize(width: 20, height: 0)
+            cornerRadii: CGSize(width: 14, height: 0)
         )
 
         let maskLayer = CAShapeLayer()
         maskLayer.path = maskPath.cgPath
+
         bubbleContentView.layer.mask = maskLayer
+        bubbleContentView.backgroundColor = bubbleColor
     }
 }

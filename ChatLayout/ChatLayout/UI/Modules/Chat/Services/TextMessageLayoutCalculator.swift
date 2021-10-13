@@ -73,12 +73,12 @@ class TextMessageLayoutCalculator {
 
     private static func frame(forBubbleWithMessageFrame messageFrame: CGRect, isIncoming: Bool) -> CGRect {
         let bubbleSize = CGSize(
-            width: messageFrame.width + messageHorizontalInsets,
+            width: max(messageFrame.width + messageHorizontalInsets, ChatAppearance.TextMessage.minBubbleWidth),
             height: messageFrame.height + messageVerticalInsets
         )
 
         let xOrigin = isIncoming
-            ? ChatAppearance.TextMessage.incomingBubleLeftInset
+            ? ChatAppearance.TextMessage.incomingBubbleLeftInset
             : screenWidth - bubbleSize.width - ChatAppearance.TextMessage.outgoingBubbleRightInset
 
         let frame = CGRect(origin: CGPoint(x: xOrigin, y: .zero), size: bubbleSize)
@@ -91,7 +91,10 @@ class TextMessageLayoutCalculator {
         case .outgoing:
             return .zero
         case .incoming:
-            return CGRect(origin: CGPoint(x: 20, y: .zero), size: ChatAppearance.TextMessage.avatarSize)
+            return CGRect(
+                origin: CGPoint(x: ChatAppearance.TextMessage.avatarLeftInset, y: .zero),
+                size: ChatAppearance.TextMessage.avatarSize
+            )
         }
     }
 
@@ -117,12 +120,12 @@ class TextMessageLayoutCalculator {
 
     private static func frame(forTimeLabelWith attributedString: NSAttributedString, bubbleFrame: CGRect) -> CGRect {
         var textFrame = attributedString.boundingRect(
-            with: bubbleFrame.size,
+            with: CGSize(width: ChatAppearance.TextMessage.maxBubbleWidth, height: .greatestFiniteMagnitude),
             options: .usesFontLeading.union(.usesLineFragmentOrigin),
             context: nil
         )
 
-        textFrame.origin.x = bubbleFrame.maxX - textFrame.width
+        textFrame.origin.x = max(bubbleFrame.minX, bubbleFrame.maxX - textFrame.width)
         textFrame.origin.y = bubbleFrame.maxY + ChatAppearance.TextMessage.timeInsets.top
 
         return textFrame

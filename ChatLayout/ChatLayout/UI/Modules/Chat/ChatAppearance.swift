@@ -14,17 +14,17 @@ enum ChatAppearance {
     static let minimumLineSpacing: CGFloat = 4
 
     enum TextMessage {
-
         static let maxBubbleWidth = UIScreen.main.bounds.width * 0.7
+        static let minBubbleWidth: CGFloat = 30
         static let outgoingBubbleRightInset: CGFloat = 26
-        static let incomingBubleLeftInset: CGFloat = 47
+        static let incomingBubbleLeftInset: CGFloat = 47
         static let outgoingBubbleColor = UIColor.socialBlue
         static let incomingBubbleColor = UIColor.adaptedFor(light: .messageLighterGray, dark: .darkGray)
 
         static let messageFont = UIFont.font(ofSize: 14, forTextStyle: .body)
         static let outgoingMessageColor = UIColor.primaryWhite
         static let incomingMessageColor = UIColor.adaptedFor(light: .primaryBlack, dark: .primaryWhite)
-        static let messageTextInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+        static let messageTextInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
         
         static let messageParagraphStyle: NSParagraphStyle = {
             let style = NSMutableParagraphStyle()
@@ -40,5 +40,6 @@ enum ChatAppearance {
         static let timeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 20, right: 0)
         
         static let avatarSize = CGSize(width: 24, height: 24)
+        static let avatarLeftInset: CGFloat = 20
     }
 }
