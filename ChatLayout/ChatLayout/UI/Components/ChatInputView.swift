@@ -13,24 +13,28 @@ class ChatInputView: UIView {
 
     private lazy var textField: UITextField = {
         let field = TextFieldWithInsets()
+        field.font = .font(ofSize: 14, forTextStyle: .body)
+        field.backgroundColor = .adaptedFor(light: .messageLighterGray, dark: .darkGray)
         field.layer.masksToBounds = true
         field.attributedPlaceholder = NSAttributedString(string: "Type your message here...", attributes: [
             .font: UIFont.font(ofSize: 14, forTextStyle: .body),
             .foregroundColor: UIColor.adaptedFor(light: .primaryBlack, dark: .socialWhite)
         ])
-        field.font = .font(ofSize: 14, forTextStyle: .body)
-        field.backgroundColor = .adaptedFor(light: .messageLighterGray, dark: .darkGray)
+        field.addTarget(self, action: #selector(textFieldDidChangeEditing), for: .editingChanged)
+
         return field
     }()
 
     private lazy var sendButton: UIButton = {
         let button = UIButton()
+        button.isEnabled = false
         button.setBackgroundImage(.chatButton, for: .normal)
         button.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
+        
         return button
     }()
 
-    // MARK: - Calbacks
+    // MARK: - Callbacks
 
     var onButtonDidTap: ((_ text: String) -> Void)?
 
@@ -95,5 +99,10 @@ class ChatInputView: UIView {
         guard let text = textField.text, !text.isEmpty else { return }
         onButtonDidTap?(text)
         textField.text = ""
+        sendButton.isEnabled = false
+    }
+
+    @objc private func textFieldDidChangeEditing() {
+        sendButton.isEnabled = textField.hasText
     }
 }
