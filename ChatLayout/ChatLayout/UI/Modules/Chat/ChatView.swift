@@ -16,8 +16,10 @@ class ChatView: UIView {
     // MARK: - Subviews
 
     private lazy var chatInputView = ChatInputView()
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
     private lazy var dataSource = makeDataSource()
+
+    var chatInputBottomConstraint: NSLayoutConstraint?
 
     // MARK: - Callbacks
 
@@ -44,7 +46,7 @@ class ChatView: UIView {
         collectionView.backgroundColor = ChatAppearance.backgroundColor
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-
+        collectionView.alwaysBounceVertical = true
         collectionView.register(ChatTextMessageCell.self)
         collectionView.register(ChatDateHeaderView.self, withKind: UICollectionView.elementKindSectionHeader)
     }
@@ -63,9 +65,11 @@ class ChatView: UIView {
 
             chatInputView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
             chatInputView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            chatInputView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            chatInputView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            chatInputView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+
+        chatInputBottomConstraint = chatInputView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        chatInputBottomConstraint?.isActive = true
     }
 
     // MARK: - Updating
@@ -155,5 +159,33 @@ extension ChatView {
         layout.sectionHeadersPinToVisibleBounds = true
 
         return layout
+    }
+}
+
+// MARK: - ChatView + KeyboardHandling
+
+extension ChatView {
+
+    func addKeyboardObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeyboardFrameChange(notification:)),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
+    }
+
+    func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+
+    @objc private func handleKeyboardFrameChange(notification: Notification)  {
+        guard let info = notification.keyboardInfo else { return }
+
+        UIViewPropertyAnimator(duration: info.duration, curve: info.curve) {
+            self.chatInputBottomConstraint?.constant = info.isPresented ? -info.keyboardHeight : 0
+            self.layoutIfNeeded()
+        }
+        .startAnimation()
     }
 }

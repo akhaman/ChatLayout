@@ -42,12 +42,12 @@ class ChatViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addKeyboardObservers()
+        chatView.addKeyboardObservers()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        removeKeyboardObservers()
+        chatView.removeKeyboardObservers()
     }
 
     // MARK: - Helpers
@@ -64,26 +64,5 @@ class ChatViewController: UIViewController {
             self?.chatView.reload(groups: groups)
             self?.chatView.scrollToLastMessage()
         }
-    }
-}
-
-// MARK: - Keyboard Handling
-
-extension ChatViewController {
-
-    private func addKeyboardObservers() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeyboardFrameChange(notification:)),
-            name: UIResponder.keyboardWillChangeFrameNotification,
-            object: nil
-        )
-    }
-
-    private func removeKeyboardObservers() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-    }
-
-    @objc private func handleKeyboardFrameChange(notification: Notification)  {
     }
 }
