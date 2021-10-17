@@ -10,6 +10,7 @@ import UIKit
 extension UIImage {
     static let arrowLeft = #imageLiteral(resourceName: "arrowLeft")
     static let backIcon = #imageLiteral(resourceName: "backIcon")
+    static let chatButton = #imageLiteral(resourceName: "chatButton")
 }
 
 // MARK: - Sample Photos
