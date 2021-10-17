@@ -60,13 +60,9 @@ class MessagesView: UIView {
         collectionView.register(CollectionHeaderFooterView.self, withKind: UICollectionView.elementKindSectionHeader)
 
         addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
