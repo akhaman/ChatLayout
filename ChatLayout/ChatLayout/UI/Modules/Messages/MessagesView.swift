@@ -12,7 +12,7 @@ class MessagesView: UIView {
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatPreview>
 
     private enum Constants {
-        static let pinnedSectonTitle = "PINNED"
+        static let pinnedSectionTitle = "PINNED"
     }
 
     private enum Section: Int, CaseIterable {
@@ -26,7 +26,7 @@ class MessagesView: UIView {
 
     // MARK: - Properties
 
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCompositionalLayoyt())
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCompositionalLayout())
     private lazy var dataSource = makeDataSource()
 
     // MARK: - Init
@@ -105,7 +105,7 @@ extension MessagesView {
                   Section(rawValue: indexPath.section) == .pinned else { return nil }
 
             return collectionView.dequeue(CollectionHeaderFooterView.self, ofKind: kind, indexPath: indexPath)
-                .updated(with: Constants.pinnedSectonTitle)
+                .updated(with: Constants.pinnedSectionTitle)
         }
 
         return dataSource
@@ -116,7 +116,7 @@ extension MessagesView {
 
 extension MessagesView {
 
-    private func makeCompositionalLayoyt() -> UICollectionViewCompositionalLayout {
+    private func makeCompositionalLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [unowned self] sectionIndex, environment in
             let sectionType = Section(rawValue: sectionIndex)
 
