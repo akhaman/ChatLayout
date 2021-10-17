@@ -31,8 +31,7 @@ class MessagesVerticalCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupImageView()
-        setupNameLabel()
+        setupLayout()
     }
 
     required init?(coder: NSCoder) {
@@ -48,28 +47,19 @@ class MessagesVerticalCell: UICollectionViewCell {
 
     // MARK: - Setup Layout
 
-    private func setupImageView() {
+    private func setupLayout() {
         contentView.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.snp.makeConstraints {
+            $0.size.equalTo(48)
+            $0.top.centerX.equalToSuperview()
+        }
 
-        NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 48),
-            imageView.heightAnchor.constraint(equalToConstant: 48),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-        ])
-    }
-
-    private func setupNameLabel() {
         contentView.addSubview(nameLabel)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        let top = nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8)
-        let bottom = nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        let centerX = nameLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
-        bottom.priority = .defaultLow
-        
-        NSLayoutConstraint.activate([top, bottom, centerX])
+        nameLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(8)
+            $0.bottom.equalToSuperview().priority(.medium)
+            $0.centerX.equalTo(imageView)
+        }
     }
 
     // MARK: - Updating

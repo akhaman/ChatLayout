@@ -61,23 +61,15 @@ class ChatInputView: UIView {
         backgroundColor = .adaptedFor(light: .primaryWhite, dark: .pureBlack)
 
         addSubview(textField)
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 12, left: 16, bottom: 36, right: 16))
+        }
 
         textField.addSubview(sendButton)
-        sendButton.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            textField.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor, constant: -36),
-
-            sendButton.topAnchor.constraint(equalTo: textField.topAnchor, constant: 4),
-            sendButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -4),
-            sendButton.bottomAnchor.constraint(equalTo: textField.bottomAnchor, constant: -4),
-            sendButton.heightAnchor.constraint(equalToConstant: 32),
-            sendButton.widthAnchor.constraint(equalToConstant: 32)
-        ])
+        sendButton.snp.makeConstraints {
+            $0.top.trailing.bottom.equalToSuperview().inset(4)
+            $0.size.equalTo(32)
+        }
     }
 
     private func addSeparator() {
@@ -85,14 +77,10 @@ class ChatInputView: UIView {
         separatorView.backgroundColor = .adaptedFor(light: .messageLighterGray, dark: .darkGray)
 
         addSubview(separatorView)
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: topAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1),
-            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        separatorView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
     }
 
     @objc private func buttonDidTap() {

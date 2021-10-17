@@ -36,14 +36,9 @@ class CollectionHeaderFooterView: UICollectionReusableView {
 
     private func setup() {
         addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: insets.top),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: insets.left),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -insets.right),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom)
-        ])
+        titleLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(insets)
+        }
     }
 
     // MARK: - Updating

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ChatView: UIView {
 
@@ -19,7 +20,7 @@ class ChatView: UIView {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
     private lazy var dataSource = makeDataSource()
 
-    private var chatInputBottomConstraint: NSLayoutConstraint?
+    private var chatInputBottomConstraint: Constraint?
 
     // MARK: - Init
 
@@ -46,23 +47,21 @@ class ChatView: UIView {
 
     private func setupLayout() {
         addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+        }
 
         addSubview(chatInputView)
-        chatInputView.translatesAutoresizingMaskIntoConstraints = false
+        chatInputView.snp.makeConstraints {
+            $0.top.equalTo(collectionView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+        }
 
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        chatInputBottomConstraint = chatInputView.snp.prepareConstraints {
+            $0.bottom.equalToSuperview()
+        }.first
 
-            chatInputView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-            chatInputView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            chatInputView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-
-        chatInputBottomConstraint = chatInputView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        chatInputBottomConstraint?.isActive = true
+        chatInputBottomConstraint?.activate()
     }
 
     // MARK: - Updating
@@ -180,7 +179,8 @@ extension ChatView {
         guard let info = notification.keyboardInfo else { return }
 
         UIViewPropertyAnimator(duration: info.duration, curve: info.curve) {
-            self.chatInputBottomConstraint?.constant = info.isPresented ? -info.keyboardHeight : 0
+            let inset = info.isPresented ? info.keyboardHeight : 0
+            self.chatInputBottomConstraint?.update(inset: inset)
             self.layoutIfNeeded()
         }
         .startAnimation()

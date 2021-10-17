@@ -53,10 +53,7 @@ class MessagesHorizontalCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupImageView()
-        setupNameLabel()
-        setupMessageLabel()
-        setupDateLabel()
+        setupLayout()
         addSeparator()
     }
 
@@ -73,50 +70,33 @@ class MessagesHorizontalCell: UICollectionViewCell {
 
     // MARK: - Setup Layout
 
-    private func setupImageView() {
+    private func setupLayout() {
         contentView.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.snp.makeConstraints {
+            $0.size.equalTo(40)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().inset(24)
+        }
 
-        NSLayoutConstraint.activate([
-            imageView.heightAnchor.constraint(equalToConstant: 40),
-            imageView.widthAnchor.constraint(equalToConstant: 40),
-            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24)
-        ])
-    }
-
-    private func setupNameLabel() {
         contentView.addSubview(nameLabel)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.top)
+            $0.leading.equalTo(imageView.snp.trailing).offset(8)
+        }
 
-        NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: imageView.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8)
-        ])
-    }
-
-    private func setupMessageLabel() {
         contentView.addSubview(messageLabel)
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.snp.makeConstraints {
+            $0.bottom.equalTo(imageView.snp.bottom)
+            $0.leading.equalTo(imageView.snp.trailing).offset(8)
+            $0.trailing.greaterThanOrEqualToSuperview().inset(43)
+        }
 
-        NSLayoutConstraint.activate([
-            messageLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
-            messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
-            messageLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -43)
-        ])
-    }
-
-    private func setupDateLabel() {
         contentView.addSubview(dateLabel)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        let top = dateLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor)
-        let leading = dateLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 8)
-        let trailing = dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
-        
-        leading.priority = .defaultLow
-
-        NSLayoutConstraint.activate([top, leading, trailing])
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(nameLabel)
+            $0.leading.greaterThanOrEqualTo(nameLabel.snp.trailing).offset(8).priority(.medium)
+            $0.trailing.equalToSuperview().inset(24)
+        }
     }
 
     // MARK: - Updating

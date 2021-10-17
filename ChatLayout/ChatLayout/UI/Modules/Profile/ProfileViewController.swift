@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileViewController: UIViewController {
 
@@ -48,29 +49,23 @@ class ProfileViewController: UIViewController {
             action: #selector(showMessages)
         )
 
-        setupCaptionLabel()
-        setupLogoutButton()
+        setupLayout()
     }
 
-    private func setupCaptionLabel() {
+    private func setupLayout() {
         view.addSubview(captionLabel)
-        captionLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            captionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 19),
-            captionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            captionLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -25)
-        ])
-    }
+        captionLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(19)
+            $0.leading.trailing.equalToSuperview().inset(25)
+        }
 
-    private func setupLogoutButton() {
         view.addSubview(logoutButton)
-        logoutButton.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 136),
-            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
+        logoutButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(136)
+            $0.centerX.equalToSuperview()
+        }
     }
 
     // MARK: - Navigation
