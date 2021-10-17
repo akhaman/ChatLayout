@@ -113,7 +113,7 @@ class MessagesHorizontalCell: UICollectionViewCell {
         let top = dateLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor)
         let leading = dateLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 8)
         let trailing = dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
-        
+
         leading.priority = .defaultLow
 
         NSLayoutConstraint.activate([top, leading, trailing])
