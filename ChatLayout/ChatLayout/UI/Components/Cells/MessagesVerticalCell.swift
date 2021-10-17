@@ -56,8 +56,7 @@ class MessagesVerticalCell: UICollectionViewCell {
             imageView.widthAnchor.constraint(equalToConstant: 48),
             imageView.heightAnchor.constraint(equalToConstant: 48),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
 
@@ -65,11 +64,12 @@ class MessagesVerticalCell: UICollectionViewCell {
         contentView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            nameLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
-        ])
+        let top = nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8)
+        let bottom = nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        let centerX = nameLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
+        bottom.priority = .defaultLow
+        
+        NSLayoutConstraint.activate([top, bottom, centerX])
     }
 
     // MARK: - Updating

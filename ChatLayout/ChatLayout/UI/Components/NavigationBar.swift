@@ -19,32 +19,32 @@ class NavigationBar: UINavigationBar {
     }
 
     private func setup() {
-        let appearence = UINavigationBarAppearance()
+        let appearance = UINavigationBarAppearance()
 
-        appearence.backgroundColor = .adaptedFor(light: .navBarLight, dark: .navBarDark)
-        appearence.setBackIndicatorImage(.backIcon, transitionMaskImage: .backIcon)
+        appearance.backgroundColor = .adaptedFor(light: .navBarLight, dark: .navBarDark)
+        appearance.setBackIndicatorImage(.backIcon, transitionMaskImage: .backIcon)
 
-        appearence.largeTitleTextAttributes = [
+        appearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.adaptedFor(light: .primaryBlack, dark: .primaryWhite),
             .font: UIFont.font(ofSize: 34, forTextStyle: .largeTitle)
         ]
 
-        appearence.titleTextAttributes = [
+        appearance.titleTextAttributes = [
             .foregroundColor: UIColor.adaptedFor(light: .primaryBlack, dark: .socialWhite),
             .font: UIFont.font(ofSize: 17, forTextStyle: .headline)
         ]
 
-        let buttonAppearence = UIBarButtonItemAppearance()
-        buttonAppearence.normal.titleTextAttributes = [
+        let buttonAppearance = UIBarButtonItemAppearance()
+        buttonAppearance.normal.titleTextAttributes = [
             .foregroundColor: UIColor.adaptedFor(light: .pureBlack, dark: .socialWhite),
             .font: UIFont.font(ofSize: 17, forTextStyle: .body)
         ]
 
-        appearence.buttonAppearance = buttonAppearence
+        appearance.buttonAppearance = buttonAppearance
         tintColor = .adaptedFor(light: .primaryBlack, dark: .socialWhite)
-        compactAppearance = appearence
-        standardAppearance = appearence
-        scrollEdgeAppearance = appearence
+        compactAppearance = appearance
+        standardAppearance = appearance
+        scrollEdgeAppearance = appearance
         prefersLargeTitles = true
     }
 }

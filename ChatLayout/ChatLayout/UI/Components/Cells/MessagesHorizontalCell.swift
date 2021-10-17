@@ -102,7 +102,7 @@ class MessagesHorizontalCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             messageLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
             messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
-            messageLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: 43)
+            messageLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -43)
         ])
     }
 
@@ -110,11 +110,13 @@ class MessagesHorizontalCell: UICollectionViewCell {
         contentView.addSubview(dateLabel)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor),
-            dateLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 8),
-            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
-        ])
+        let top = dateLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor)
+        let leading = dateLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 8)
+        let trailing = dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
+        
+        leading.priority = .defaultLow
+
+        NSLayoutConstraint.activate([top, leading, trailing])
     }
 
     // MARK: - Updating
