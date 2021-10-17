@@ -36,7 +36,7 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        chatProvider.loadChatHistory()
+        self.chatProvider.loadChatHistory()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,13 +54,18 @@ class ChatViewController: UIViewController {
     private func setupView() {
         navigationItem.largeTitleDisplayMode = .never
 
-        chatView.onSendMessageButtonDidTap = { [unowned self] messageText in
-            chatProvider.send(messageText: messageText)
+        chatView.observeSendButtonTap { [weak self] messageText in
+            self?.chatProvider.send(messageText: messageText)
         }
 
-        chatProvider.observeMessages { [weak self] groups in
+        chatProvider.observeChatHistoryLoading { [weak self] groups in
             self?.chatView.reload(groups: groups)
-            self?.chatView.scrollToLastMessage()
+            self?.chatView.scrollToLastMessage(animated: false)
+        }
+
+        chatProvider.observeMessagesReceiving { [weak self] groups in
+            self?.chatView.reload(groups: groups)
+            self?.chatView.scrollToLastMessage(animated: true)
         }
     }
 }

@@ -16,17 +16,10 @@ class ChatView: UIView {
     // MARK: - Subviews
 
     private lazy var chatInputView = ChatInputView()
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
     private lazy var dataSource = makeDataSource()
 
-    var chatInputBottomConstraint: NSLayoutConstraint?
-
-    // MARK: - Callbacks
-
-    var onSendMessageButtonDidTap: ((_ text: String) -> Void)? {
-        get { chatInputView.onButtonDidTap }
-        set { chatInputView.onButtonDidTap = newValue }
-    }
+    private var chatInputBottomConstraint: NSLayoutConstraint?
 
     // MARK: - Init
 
@@ -85,11 +78,15 @@ class ChatView: UIView {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 
-    func scrollToLastMessage() {
+    func scrollToLastMessage(animated: Bool = true) {
         let section = max(0, collectionView.numberOfSections - 1)
         let item = max(0, collectionView.numberOfItems(inSection: section) - 1)
 
-        collectionView.scrollToItem(at: IndexPath(item: item, section: section), at: .bottom, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: item, section: section), at: .bottom, animated: animated)
+    }
+
+    func observeSendButtonTap(_ handler: @escaping (_ text: String) -> Void) {
+        chatInputView.onButtonDidTap = handler
     }
 }
 
