@@ -30,7 +30,7 @@ class ChatInputView: UIView {
         button.isEnabled = false
         button.setBackgroundImage(.chatButton, for: .normal)
         button.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
-        
+
         return button
     }()
 

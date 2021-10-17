@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func makeVC() -> UIViewController {
-        let provider = ChatProvider(messageMapper: ChatMessageMapper(currentUserId: "jessica"))
+        let provider = ChatProvider(messageMapper: ChatMessageMapper(), currentUserId: .uuid, anotherUserId: .uuid)
         let controller = ChatViewController(chatName: "Mike", chatProvider: provider)
         return controller
     }

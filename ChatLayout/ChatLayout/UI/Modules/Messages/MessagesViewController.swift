@@ -55,7 +55,7 @@ class MessagesViewController: UIViewController {
     // MARK: - Actions
 
     private func showChat(with preview: ChatPreview) {
-        let provider = ChatProvider(messageMapper: ChatMessageMapper(currentUserId: "jessica"))
+        let provider = ChatProvider(messageMapper: ChatMessageMapper(), currentUserId: .uuid, anotherUserId: preview.id)
         let controller = ChatViewController(chatName: preview.firstName, chatProvider: provider)
         navigationController?.pushViewController(controller, animated: true)
     }

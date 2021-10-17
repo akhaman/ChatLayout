@@ -8,33 +8,28 @@
 import Foundation
 
 protocol ChatMessageMapperProtocol {
-    func map(chatMessages: [ReceivedMessage]) -> [ChatMessagesGroup]
+    func map(chatMessages: [ReceivedMessage], currentUserId: String) -> [ChatMessagesGroup]
 }
 
 class ChatMessageMapper: ChatMessageMapperProtocol {
 
-    private let currentUserId: String
-
-    init(currentUserId: String) {
-        self.currentUserId = currentUserId
-    }
-
-    func map(chatMessages: [ReceivedMessage]) -> [ChatMessagesGroup] {
+    func map(chatMessages: [ReceivedMessage], currentUserId: String) -> [ChatMessagesGroup] {
         chatMessages.groupedBy(dateComponents: .year, .month, .day)
-            .sorted { $0.key > $1.key }
+            .sorted { $0.key < $1.key }
             .map { date, messages in
                 ChatMessagesGroup(
                     sectionId: ChatSectionIdentifier(sectionId: .uuid, dateText: formattedDate(from: date)),
-                    messageItems: messageItems(from: messages)
+                    messageItems: messageItems(from: messages, currentUserId: currentUserId)
                 )
             }
     }
 
     // MARK: - Helpers
 
-    private func messageItems(from messages: [ReceivedMessage]) -> [ChatMessageItem] {
+    private func messageItems(from messages: [ReceivedMessage], currentUserId: String) -> [ChatMessageItem] {
         messages.segmented.map { previous, current, next in
             let isLastInGroup = isLastInGroup(current: current, next: next)
+
             return ChatMessageItem(
                 messageId: current.messageId,
                 messageText: current.messageText,

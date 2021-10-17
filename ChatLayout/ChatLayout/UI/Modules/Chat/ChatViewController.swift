@@ -13,15 +13,14 @@ class ChatViewController: UIViewController {
 
     // MARK: - Properties
 
-    private let chatName: String
     private let chatProvider: ChatProviderProtocol
 
     // MARK: - Init
 
     init(chatName: String, chatProvider: ChatProviderProtocol) {
-        self.chatName = chatName
         self.chatProvider = chatProvider
         super.init(nibName: nil, bundle: nil)
+        title = chatName
     }
 
     required init?(coder: NSCoder) {
@@ -53,7 +52,6 @@ class ChatViewController: UIViewController {
     // MARK: - Helpers
 
     private func setupView() {
-        title = chatName
         navigationItem.largeTitleDisplayMode = .never
 
         chatView.onSendMessageButtonDidTap = { [unowned self] messageText in

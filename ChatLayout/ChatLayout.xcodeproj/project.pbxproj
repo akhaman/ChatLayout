@@ -103,13 +103,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE0B7A8B27149329001BA2F8 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		CE0B7A962715F7F3001BA2F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +161,6 @@
 		CE46FF932708DDFD00EBEAC2 /* ChatLayout */ = {
 			isa = PBXGroup;
 			children = (
-				CE0B7A8B27149329001BA2F8 /* Services */,
 				CE46FFA82708E01F00EBEAC2 /* UI */,
 				CE46FFAC2708E05200EBEAC2 /* Extensions */,
 				CE46FFAB2708E04B00EBEAC2 /* Resourses */,
