@@ -14,7 +14,7 @@ class TextMessageLayoutCalculator {
         let messageFrame = frame(forMessageLabelWith: attributedMessage)
         let bubbleFrame = frame(forBubbleWithMessageFrame: messageFrame, isIncoming: model.isIncoming)
         let attributedTime = model.timeText.map { makeAttributedTime(from: $0, isIncoming: model.isIncoming) }
-        let timeFrame = attributedTime.map { frame(forTimeLabelWith: $0, bubbleFrame: bubbleFrame) }
+        let timeFrame = attributedTime.map { frame(forTimeLabelWith: $0, bubbleFrame: bubbleFrame, isIncoming: model.isIncoming) }
         let avatarFrame = avatarFrame(forCellStyle: model.style)
 
         return Result(
@@ -118,14 +118,14 @@ class TextMessageLayoutCalculator {
         return textFrame
     }
 
-    private static func frame(forTimeLabelWith attributedString: NSAttributedString, bubbleFrame: CGRect) -> CGRect {
+    private static func frame(forTimeLabelWith attributedString: NSAttributedString, bubbleFrame: CGRect, isIncoming: Bool) -> CGRect {
         var textFrame = attributedString.boundingRect(
             with: CGSize(width: ChatAppearance.TextMessage.maxBubbleWidth, height: .greatestFiniteMagnitude),
             options: .usesFontLeading.union(.usesLineFragmentOrigin),
             context: nil
         )
 
-        textFrame.origin.x = max(bubbleFrame.minX, bubbleFrame.maxX - textFrame.width)
+        textFrame.origin.x =  isIncoming ? max(bubbleFrame.minX, bubbleFrame.maxX - textFrame.width) : bubbleFrame.maxX - textFrame.width
         textFrame.origin.y = bubbleFrame.maxY + ChatAppearance.TextMessage.timeInsets.top
 
         return textFrame
