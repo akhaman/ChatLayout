@@ -15,6 +15,8 @@ class ChatDateHeaderView: UICollectionReusableView {
         label.textColor = .lighterGray
         label.textAlignment = .center
         label.adjustsFontForContentSizeCategory = true
+        label.backgroundColor = ChatAppearance.backgroundColor.withAlphaComponent(0.8)
+
         return label
     }()
 
@@ -29,13 +31,16 @@ class ChatDateHeaderView: UICollectionReusableView {
 
     private func updateLayout() {
         titleLabel.sizeToFit()
+        titleLabel.frame.size.width += 10
+        titleLabel.frame.size.height += 7
 
-        let titleOrigin = CGPoint(
+        titleLabel.layer.cornerRadius = titleLabel.frame.height / 2
+        titleLabel.layer.masksToBounds = true
+
+        titleLabel.frame.origin = CGPoint(
             x: bounds.midX - titleLabel.frame.width / 2,
             y: bounds.maxY - titleLabel.frame.height
         )
-
-        titleLabel.frame.origin = titleOrigin
     }
 
     private func setup() {
