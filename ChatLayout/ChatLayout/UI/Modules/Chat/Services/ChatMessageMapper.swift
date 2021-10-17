@@ -34,7 +34,7 @@ class ChatMessageMapper: ChatMessageMapperProtocol {
                 messageId: current.messageId,
                 messageText: current.messageText,
                 timeText: isLastInGroup ? formatTime(from: current.date) : nil,
-                authorImage: isLastInGroup ? .jessica : nil,
+                authorImage: isLastInGroup ? current.authorImage : nil,
                 style: current.authorId == currentUserId ? .outgoing : .incoming
             )
         }

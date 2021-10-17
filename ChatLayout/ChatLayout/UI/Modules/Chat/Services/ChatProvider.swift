@@ -5,7 +5,7 @@
 //  Created by Ruslan Akhmadeev on 11.10.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol ChatProviderProtocol: AnyObject {
     func loadChatHistory()
@@ -19,6 +19,7 @@ class ChatProvider: ChatProviderProtocol {
     private let messageMapper: ChatMessageMapperProtocol
     private let currentUserId: String
     private let anotherUserId: String
+    private let anotherUserImage: UIImage?
 
     // MARK: - Callbacks
 
@@ -30,10 +31,11 @@ class ChatProvider: ChatProviderProtocol {
 
     // MARK: - Initialization
 
-    init(messageMapper: ChatMessageMapperProtocol, currentUserId: String, anotherUserId: String) {
+    init(messageMapper: ChatMessageMapperProtocol, currentUserId: String, anotherUserId: String, anotherUserImage: UIImage?) {
         self.messageMapper = messageMapper
         self.currentUserId = currentUserId
         self.anotherUserId = anotherUserId
+        self.anotherUserImage = anotherUserImage
     }
 
     // MARK: - Actions
@@ -47,7 +49,7 @@ class ChatProvider: ChatProviderProtocol {
     }
 
     func loadChatHistory() {
-        chatHistory = ReceivedMessage.mockChatHistory(currentUserId: currentUserId, anotherUserId: anotherUserId)
+        chatHistory = ReceivedMessage.mockChatHistory(currentUserId: currentUserId, anotherUserId: anotherUserId, anotherUserImage: anotherUserImage)
         let mappedMessages = messageMapper.map(chatMessages: chatHistory, currentUserId: currentUserId)
         // Вот тута кидаем вызов каллбека в конец очереди тк иначе collection view не скролится к последнему сообщению.
         // Причина не совсем ясна. Возможно не успевает свой лейаут нормально посчитать.

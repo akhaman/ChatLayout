@@ -5,34 +5,37 @@
 //  Created by Ruslan Akhmadeev on 11.10.2021.
 //
 
-import Foundation
+import UIKit
 
 struct ReceivedMessage: Dated {
     let messageId: String
     let date: Date
     let messageText: String
     let authorId: String
+    let authorImage: UIImage?
 }
 
 extension ReceivedMessage {
 
-    static func new(messageText: String, authorId: String, date: Date = .now) -> ReceivedMessage {
+    static func new(messageText: String, authorId: String, authorImage: UIImage? = nil, date: Date = .now) -> ReceivedMessage {
         ReceivedMessage(
             messageId: .uuid,
             date: date,
             messageText: messageText,
-            authorId: authorId
+            authorId: authorId,
+            authorImage: authorImage
         )
     }
 }
 
 extension ReceivedMessage {
 
-    static func mockChatHistory(currentUserId: String, anotherUserId: String) -> [ReceivedMessage] {
+    static func mockChatHistory(currentUserId: String, anotherUserId: String, anotherUserImage: UIImage?) -> [ReceivedMessage] {
         let history = [
             new(
                 messageText: "Alex, let’s meet this weekend. I’ll check with Dave too 😎!",
                 authorId: anotherUserId,
+                authorImage: anotherUserImage,
                 date: .from(year: 2021, month: 9, day: 14, hour: 8, minute: 27, second: 5)
             ),
             new(
@@ -48,6 +51,7 @@ extension ReceivedMessage {
             new(
                 messageText: "Alrighty! Will give you a call shortly 🤗",
                 authorId: anotherUserId,
+                authorImage: anotherUserImage,
                 date: .from(year: 2021, month: 9, day: 14, hour: 9, minute: 1, second: 2)
             ),
             new(
@@ -58,6 +62,7 @@ extension ReceivedMessage {
             new(
                 messageText: "Hey you! Are you there?",
                 authorId: anotherUserId,
+                authorImage: anotherUserImage,
                 date: .today(hour: 11, minute: 53, second: 2)
             ),
             new(
@@ -85,6 +90,7 @@ extension ReceivedMessage {
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 """,
                 authorId: anotherUserId,
+                authorImage: anotherUserImage,
                 date: .today(hour: 12, minute: 14, second: 56)
             ),
             new(
@@ -92,6 +98,7 @@ extension ReceivedMessage {
                 Some text
                 """,
                 authorId: anotherUserId,
+                authorImage: anotherUserImage,
                 date: .today(hour: 12, minute: 14, second: 58)
             )
         ]

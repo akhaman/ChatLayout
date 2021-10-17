@@ -30,10 +30,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
-
-    func makeVC() -> UIViewController {
-        let provider = ChatProvider(messageMapper: ChatMessageMapper(), currentUserId: .uuid, anotherUserId: .uuid)
-        let controller = ChatViewController(chatName: "Mike", chatProvider: provider)
-        return controller
-    }
 }
