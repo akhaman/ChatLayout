@@ -8,8 +8,7 @@
 import UIKit
 
 class ChatTextMessageCell: UICollectionViewCell {
-
-    // MARK: - Subviews
+    // MARK: Subviews
 
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()

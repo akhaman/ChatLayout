@@ -8,14 +8,13 @@
 import UIKit
 
 class ChatViewController: UIViewController {
-
     private lazy var chatView = ChatView()
 
-    // MARK: - Properties
+    // MARK: Properties
 
     private let chatProvider: ChatProviderProtocol
 
-    // MARK: - Init
+    // MARK: Init
 
     init(chatName: String, chatProvider: ChatProviderProtocol) {
         self.chatProvider = chatProvider
@@ -27,7 +26,7 @@ class ChatViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
 
     override func loadView() {
         view = chatView
@@ -49,7 +48,7 @@ class ChatViewController: UIViewController {
         chatView.removeKeyboardObservers()
     }
 
-    // MARK: - Helpers
+    // MARK: Helpers
 
     private func setupView() {
         navigationItem.largeTitleDisplayMode = .never

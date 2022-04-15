@@ -9,12 +9,11 @@ import UIKit
 import SnapKit
 
 class ChatView: UIView {
-
     private typealias Item = ChatMessageItem
     private typealias Section = ChatSectionIdentifier
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatMessageItem>
 
-    // MARK: - Subviews
+    // MARK: Subviews
 
     private lazy var chatInputView = ChatInputView()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
@@ -22,7 +21,7 @@ class ChatView: UIView {
 
     private var chatInputBottomConstraint: Constraint?
 
-    // MARK: - Init
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +33,31 @@ class ChatView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup
+    // MARK: Updating
+
+    func reload(groups: [ChatMessagesGroup]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections(groups.map { $0.sectionId })
+
+        groups.forEach { group in
+            snapshot.appendItems(group.messageItems, toSection: group.sectionId)
+        }
+
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+
+    func scrollToLastMessage(animated: Bool = true) {
+        let section = max(0, collectionView.numberOfSections - 1)
+        let item = max(0, collectionView.numberOfItems(inSection: section) - 1)
+
+        collectionView.scrollToItem(at: IndexPath(item: item, section: section), at: .bottom, animated: animated)
+    }
+
+    func observeSendButtonTap(_ handler: @escaping (_ text: String) -> Void) {
+        chatInputView.onButtonDidTap = handler
+    }
+
+    // MARK: Setup
 
     private func setupCollectionView() {
         collectionView.backgroundColor = ChatAppearance.backgroundColor
@@ -63,36 +86,11 @@ class ChatView: UIView {
 
         chatInputBottomConstraint?.activate()
     }
-
-    // MARK: - Updating
-
-    func reload(groups: [ChatMessagesGroup]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        snapshot.appendSections(groups.map { $0.sectionId })
-
-        groups.forEach { group in
-            snapshot.appendItems(group.messageItems, toSection: group.sectionId)
-        }
-
-        dataSource.apply(snapshot, animatingDifferences: false)
-    }
-
-    func scrollToLastMessage(animated: Bool = true) {
-        let section = max(0, collectionView.numberOfSections - 1)
-        let item = max(0, collectionView.numberOfItems(inSection: section) - 1)
-
-        collectionView.scrollToItem(at: IndexPath(item: item, section: section), at: .bottom, animated: animated)
-    }
-
-    func observeSendButtonTap(_ handler: @escaping (_ text: String) -> Void) {
-        chatInputView.onButtonDidTap = handler
-    }
 }
 
-// MARK: - CollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension ChatView: UICollectionViewDelegateFlowLayout {
-
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -122,7 +120,6 @@ extension ChatView: UICollectionViewDelegateFlowLayout {
 // MARK: - DiffableDataSource
 
 extension ChatView {
-
     private func makeDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, message in
             collectionView.dequeue(ChatTextMessageCell.self, for: indexPath).updated(withMessage: message)
@@ -147,7 +144,6 @@ extension ChatView {
 // MARK: - CollectionViewLayout
 
 extension ChatView {
-
     private func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = ChatAppearance.sectionInsets
@@ -161,7 +157,6 @@ extension ChatView {
 // MARK: - ChatView + KeyboardHandling
 
 extension ChatView {
-
     func addKeyboardObservers() {
         NotificationCenter.default.addObserver(
             self,

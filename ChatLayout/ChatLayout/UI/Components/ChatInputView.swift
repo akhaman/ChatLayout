@@ -8,8 +8,7 @@
 import UIKit
 
 class ChatInputView: UIView {
-
-    // MARK: - Subviews
+    // MARK: Subviews
 
     private lazy var textField: UITextField = {
         let field = TextFieldWithInsets()
@@ -34,11 +33,11 @@ class ChatInputView: UIView {
         return button
     }()
 
-    // MARK: - Callbacks
+    // MARK: Callbacks
 
     var onButtonDidTap: ((_ text: String) -> Void)?
 
-    // MARK: - Init
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,7 +53,7 @@ class ChatInputView: UIView {
         textField.layer.cornerRadius = textField.frame.height / 2
     }
 
-    // MARK: - Setup
+    // MARK: Setup
 
     private func setup() {
         addSeparator()

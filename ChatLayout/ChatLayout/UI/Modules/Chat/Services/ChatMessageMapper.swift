@@ -12,7 +12,6 @@ protocol ChatMessageMapperProtocol {
 }
 
 class ChatMessageMapper: ChatMessageMapperProtocol {
-
     func map(chatMessages: [ReceivedMessage], currentUserId: String) -> [ChatMessagesGroup] {
         chatMessages.groupedBy(dateComponents: .year, .month, .day)
             .sorted { $0.key < $1.key }
@@ -24,7 +23,7 @@ class ChatMessageMapper: ChatMessageMapperProtocol {
             }
     }
 
-    // MARK: - Helpers
+    // MARK: Helpers
 
     private func messageItems(from messages: [ReceivedMessage], currentUserId: String) -> [ChatMessageItem] {
         messages.segmented.map { previous, current, next in
@@ -62,7 +61,6 @@ class ChatMessageMapper: ChatMessageMapperProtocol {
 // MARK: - Formatters
 
 extension ChatMessageMapper {
-
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd, yyyy"

@@ -8,7 +8,6 @@
 import UIKit
 
 class TextMessageLayoutCalculator {
-
     static func calculate(forMessage model: ChatMessageItem) -> Result {
         let attributedMessage = makeAttributedMessage(from: model.messageText, isIncoming: model.isIncoming)
         let messageFrame = frame(forMessageLabelWith: attributedMessage)
@@ -135,7 +134,6 @@ class TextMessageLayoutCalculator {
 // MARK: - Result Model
 
 extension TextMessageLayoutCalculator {
-
     struct Result {
         let bubbleFrame: CGRect
         let messageFrame: CGRect

@@ -8,12 +8,10 @@
 import UIKit
 
 class MessagesVerticalCell: UICollectionViewCell {
-
-    // MARK: - UI
+    // MARK: Subviews
 
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .lighterGray
         view.layer.masksToBounds = true
         view.contentMode = .scaleToFill
         return view
@@ -27,7 +25,7 @@ class MessagesVerticalCell: UICollectionViewCell {
         return label
     }()
     
-    // MARK: - Init
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,14 +36,23 @@ class MessagesVerticalCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Parent Methods
+    // MARK: Overriding Methods
 
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
     }
 
-    // MARK: - Setup Layout
+    // MARK: Updating
+
+    @discardableResult
+    func updated(withImage image: UIImage, name: String) -> Self {
+        imageView.image = image
+        nameLabel.text = name
+        return self
+    }
+
+    // MARK: Setup Layout
 
     private func setupLayout() {
         contentView.addSubview(imageView)
@@ -60,14 +67,5 @@ class MessagesVerticalCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().priority(.medium)
             $0.centerX.equalTo(imageView)
         }
-    }
-
-    // MARK: - Updating
-
-    @discardableResult
-    func updated(withImage image: UIImage, name: String) -> Self {
-        imageView.image = image
-        nameLabel.text = name
-        return self
     }
 }

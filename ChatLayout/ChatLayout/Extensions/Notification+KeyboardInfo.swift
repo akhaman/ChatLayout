@@ -8,6 +8,12 @@
 import UIKit
 
 extension Notification {
+    struct KeyboardInfo {
+        let duration: TimeInterval
+        let curve: UIView.AnimationCurve
+        let keyboardHeight: CGFloat
+        let isPresented: Bool
+    }
 
     var keyboardInfo: KeyboardInfo? {
         guard let userInfo = userInfo,
@@ -22,12 +28,5 @@ extension Notification {
         let isKeyboardPresented = endFrame.minY < UIScreen.main.bounds.maxY
 
         return KeyboardInfo(duration: duration, curve: curve, keyboardHeight: keyboardHeight, isPresented: isKeyboardPresented)
-    }
-
-    struct KeyboardInfo {
-        let duration: TimeInterval
-        let curve: UIView.AnimationCurve
-        let keyboardHeight: CGFloat
-        let isPresented: Bool
     }
 }

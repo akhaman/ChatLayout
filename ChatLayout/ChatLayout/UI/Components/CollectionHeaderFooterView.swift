@@ -8,10 +8,9 @@
 import UIKit
 
 class CollectionHeaderFooterView: UICollectionReusableView {
-
     private let insets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
 
-    // MARK: - Subviews
+    // MARK: Subviews
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -21,7 +20,7 @@ class CollectionHeaderFooterView: UICollectionReusableView {
         return label
     }()
 
-    // MARK: - Init
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,20 +31,20 @@ class CollectionHeaderFooterView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Helpers
+    // MARK: Updating
+
+    @discardableResult
+    func updated(with title: String) -> Self {
+        titleLabel.text = title
+        return self
+    }
+
+    // MARK: Helpers
 
     private func setup() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(insets)
         }
-    }
-
-    // MARK: - Updating
-
-    @discardableResult
-    func updated(with title: String) -> Self {
-        titleLabel.text = title
-        return self
     }
 }

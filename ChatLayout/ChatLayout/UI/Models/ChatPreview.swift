@@ -23,7 +23,6 @@ struct ChatPreview: Hashable {
 // MARK: - Mock
 
 extension ChatPreview {
-
     static func mock() -> [ChatPreview] {
         [
             ChatPreview(

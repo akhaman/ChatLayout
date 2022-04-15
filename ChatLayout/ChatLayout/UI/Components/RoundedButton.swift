@@ -8,10 +8,9 @@
 import UIKit
 
 class RoundedButton: UIButton {
-
     private var spacing: CGFloat = .zero
 
-    // MARK: - Init
+    // MARK: Init
 
     convenience init(
         title: String,
@@ -36,7 +35,7 @@ class RoundedButton: UIButton {
         layer.borderWidth = 1
     }
 
-    // MARK: - Parent Methods
+    // MARK: Overriding
 
     override func layoutSubviews() {
         super.layoutSubviews()

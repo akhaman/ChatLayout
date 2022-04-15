@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class ProfileViewController: UIViewController {
-
     private enum Constants {
         static let title = "Alex Tsimikas"
         static let logoutButtonTitle = "Logout"
@@ -17,7 +16,7 @@ class ProfileViewController: UIViewController {
         static let messagesButtonItemTitle = "Messages"
     }
 
-    // MARK: - Subviews
+    // MARK: Subviews
 
     private lazy var logoutButton: UIButton = RoundedButton(title: Constants.logoutButtonTitle, image: .arrowLeft)
 
@@ -29,14 +28,14 @@ class ProfileViewController: UIViewController {
         return label
     }()
 
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
 
-    // MARK: - Helpers
+    // MARK: Helpers
 
     private func setupView() {
         title = Constants.title
