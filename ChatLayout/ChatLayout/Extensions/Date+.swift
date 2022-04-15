@@ -12,7 +12,6 @@ protocol Dated {
 }
 
 extension Array where Element: Dated {
-
     func groupedBy(dateComponents: Calendar.Component...) -> [Date: [Element]] {
         groupedBy(dateComponents: Set(dateComponents))
     }
@@ -36,6 +35,13 @@ extension Array where Element: Dated {
 }
 
 extension Date {
+    static var now: Date {
+        Date()
+    }
+
+    var isToday: Bool {
+        Calendar.current.isDateInToday(self)
+    }
 
     func equals(with anotherDate: Date, by dateComponents: Calendar.Component...) -> Bool {
         let componentsSet = Set(dateComponents)
@@ -43,13 +49,5 @@ extension Date {
         let anotherComponents = Calendar.current.dateComponents(componentsSet, from: anotherDate)
 
         return selfComponents == anotherComponents
-    }
-
-    var isToday: Bool {
-        Calendar.current.isDateInToday(self)
-    }
-
-    static var now: Date {
-        Date()
     }
 }

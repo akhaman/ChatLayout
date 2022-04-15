@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIFont {
-
     static func font(ofSize size: CGFloat, forTextStyle style: UIFont.TextStyle) -> UIFont {
         UIFontMetrics(forTextStyle: style).scaledFont(for: habibiRegular(ofSize: size))
     }

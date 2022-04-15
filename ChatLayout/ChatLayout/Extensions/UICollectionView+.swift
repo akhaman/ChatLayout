@@ -8,7 +8,6 @@
 import UIKit
 
 extension UICollectionView {
-    
     func register(_ cells: [UICollectionViewCell.Type]) {
         cells.forEach { register($0, forCellWithReuseIdentifier: "\($0)") }
     }

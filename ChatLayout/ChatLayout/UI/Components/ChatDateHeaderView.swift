@@ -8,7 +8,6 @@
 import UIKit
 
 class ChatDateHeaderView: UICollectionReusableView {
-
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .font(ofSize: 12, forTextStyle: .caption2)
@@ -29,6 +28,16 @@ class ChatDateHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func updated(withTitle title: String) -> Self {
+        titleLabel.text = title
+        updateLayout()
+        return self
+    }
+
+    private func setup() {
+        addSubview(titleLabel)
+    }
+
     private func updateLayout() {
         titleLabel.sizeToFit()
         titleLabel.frame.size.width += 10
@@ -41,15 +50,5 @@ class ChatDateHeaderView: UICollectionReusableView {
             x: bounds.midX - titleLabel.frame.width / 2,
             y: bounds.maxY - titleLabel.frame.height
         )
-    }
-
-    private func setup() {
-        addSubview(titleLabel)
-    }
-
-    func updated(withTitle title: String) -> Self {
-        titleLabel.text = title
-        updateLayout()
-        return self
     }
 }

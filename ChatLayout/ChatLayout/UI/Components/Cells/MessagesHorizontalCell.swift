@@ -8,12 +8,10 @@
 import UIKit
 
 class MessagesHorizontalCell: UICollectionViewCell {
-
-    // MARK: - Subviews
+    // MARK: Subviews
 
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .lighterGray
         view.layer.masksToBounds = true
         view.contentMode = .scaleToFill
         return view
@@ -43,13 +41,15 @@ class MessagesHorizontalCell: UICollectionViewCell {
         return label
     }()
 
+    // MARK: Overriding Properties
+
     override var isHighlighted: Bool {
         didSet {
             contentView.backgroundColor = isHighlighted ? .opaqueSeparator : .clear
         }
     }
 
-    // MARK: - Init
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,14 +61,25 @@ class MessagesHorizontalCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Parent Methods
+    // MARK: Overriding Methods
 
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.layer.cornerRadius = imageView.frame.height / 2
     }
 
-    // MARK: - Setup Layout
+    // MARK: Updating
+
+    @discardableResult
+    func updated(withFullName fullName: String, image: UIImage, message: String, date: String) -> Self {
+        imageView.image = image
+        nameLabel.text = fullName
+        messageLabel.text = message
+        dateLabel.text = date
+        return self
+    }
+
+    // MARK: Setup Layout
 
     private func setupLayout() {
         contentView.addSubview(imageView)
@@ -97,16 +108,5 @@ class MessagesHorizontalCell: UICollectionViewCell {
             $0.leading.greaterThanOrEqualTo(nameLabel.snp.trailing).offset(8).priority(.medium)
             $0.trailing.equalToSuperview().inset(24)
         }
-    }
-
-    // MARK: - Updating
-
-    @discardableResult
-    func updated(withFullName fullName: String, image: UIImage, message: String, date: String) -> Self {
-        imageView.image = image
-        nameLabel.text = fullName
-        messageLabel.text = message
-        dateLabel.text = date
-        return self
     }
 }

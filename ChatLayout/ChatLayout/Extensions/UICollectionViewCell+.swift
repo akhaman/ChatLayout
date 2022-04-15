@@ -8,7 +8,6 @@
 import UIKit
 
 extension UICollectionViewCell {
-
     func addSeparator() {
         let separatorView = UIView()
         separatorView.backgroundColor = .separator
