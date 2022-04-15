@@ -15,21 +15,21 @@ protocol ChatProviderProtocol: AnyObject {
 }
 
 class ChatProvider: ChatProviderProtocol {
-
     private let messageMapper: ChatMessageMapperProtocol
     private let currentUserId: String
     private let anotherUserId: String
     private let anotherUserImage: UIImage?
 
-    // MARK: - Callbacks
+    // MARK: Callbacks
 
     private var onMessagesReceived: ((_ messages: [ChatMessagesGroup]) -> Void)?
     private var onChatHistoryLoaded: ((_ messages: [ChatMessagesGroup]) -> Void)?
-    // MARK: - State
+
+    // MARK: State
 
     private var chatHistory: [ReceivedMessage] = []
 
-    // MARK: - Initialization
+    // MARK: Initialization
 
     init(messageMapper: ChatMessageMapperProtocol, currentUserId: String, anotherUserId: String, anotherUserImage: UIImage?) {
         self.messageMapper = messageMapper
@@ -38,7 +38,7 @@ class ChatProvider: ChatProviderProtocol {
         self.anotherUserImage = anotherUserImage
     }
 
-    // MARK: - Actions
+    // MARK: Actions
 
     func observeChatHistoryLoading(_ callback: @escaping ([ChatMessagesGroup]) -> Void) {
         onChatHistoryLoaded = callback

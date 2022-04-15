@@ -8,7 +8,6 @@
 import UIKit
 
 enum ChatAppearance {
-
     static let backgroundColor = UIColor.adaptedFor(light: .primaryWhite, dark: .primaryBlack)
     static let sectionInsets = UIEdgeInsets(top: 24, left: 0, bottom: 0, right: 0)
     static let minimumLineSpacing: CGFloat = 4

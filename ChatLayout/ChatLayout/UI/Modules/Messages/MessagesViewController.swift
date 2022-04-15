@@ -8,7 +8,6 @@
 import UIKit
 
 class MessagesViewController: UIViewController {
-
     private enum Constants {
         static let title = "MESSAGES"
         static let searchPlaceholder = "Who do you want to chat with?"
@@ -16,7 +15,7 @@ class MessagesViewController: UIViewController {
 
     private lazy var messagesView = MessagesView()
 
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
 
     override func loadView() {
         view = messagesView
@@ -29,7 +28,7 @@ class MessagesViewController: UIViewController {
         messagesView.update(pinnedChats: ChatPreview.mock(), listedChats: ChatPreview.mock())
     }
 
-    // MARK: - Helpers
+    // MARK: Helpers
 
     private func setupView() {
         title = Constants.title
@@ -52,7 +51,7 @@ class MessagesViewController: UIViewController {
         navigationItem.searchController = searchController
     }
 
-    // MARK: - Actions
+    // MARK: Navigation
 
     private func showChat(with preview: ChatPreview) {
         let provider = ChatProvider(

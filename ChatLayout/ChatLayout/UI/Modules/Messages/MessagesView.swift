@@ -8,7 +8,6 @@
 import UIKit
 
 class MessagesView: UIView {
-
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, ChatPreview>
 
     private enum Constants {
@@ -20,16 +19,16 @@ class MessagesView: UIView {
         case chats
     }
 
-    // MARK: - Output
+    // MARK: Callbacks
 
     var onSelectChat: ((_ chat: ChatPreview) -> Void)?
 
-    // MARK: - Properties
+    // MARK: Properties
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCompositionalLayout())
     private lazy var dataSource = makeDataSource()
 
-    // MARK: - Init
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,7 +39,7 @@ class MessagesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Updating
+    // MARK: Updating
 
     func update(pinnedChats pinned: [ChatPreview], listedChats listed: [ChatPreview]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, ChatPreview>()
@@ -50,7 +49,7 @@ class MessagesView: UIView {
         dataSource.apply(snapshot)
     }
 
-    // MARK: - Setup
+    // MARK: Setup
 
     private func setupCollectionView() {
         collectionView.backgroundColor = .adaptedFor(light: .primaryWhite, dark: .primaryBlack)
@@ -66,20 +65,18 @@ class MessagesView: UIView {
     }
 }
 
-// MARK: - CollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension MessagesView: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let chat = dataSource.itemIdentifier(for: indexPath) else { return }
         onSelectChat?(chat)
     }
 }
 
-// MARK: - CollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension MessagesView {
-
     private func makeDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, chat in
             let sectionType = Section(rawValue: indexPath.section)
@@ -111,7 +108,6 @@ extension MessagesView {
 // MARK: - Compositional Layout
 
 extension MessagesView {
-
     private func makeCompositionalLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [unowned self] sectionIndex, environment in
             let sectionType = Section(rawValue: sectionIndex)

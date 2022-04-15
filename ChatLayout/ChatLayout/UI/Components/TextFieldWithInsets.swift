@@ -8,7 +8,6 @@
 import UIKit
 
 class TextFieldWithInsets: UITextField {
-
     var insets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 44)
 
     override func textRect(forBounds bounds: CGRect) -> CGRect {
